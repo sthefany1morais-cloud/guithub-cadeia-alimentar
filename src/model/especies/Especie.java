@@ -1,5 +1,6 @@
 package model.especies;
 
+import execoes.ValorEnergeticoInvalidoException;
 import model.Aresta;
 
 import java.util.ArrayList;
@@ -12,8 +13,11 @@ public abstract class Especie {
     protected List<Aresta> presas;
     protected List<Aresta> predadores;
 
-    public Especie(String nome, int energia){
+    public Especie(String nome, int energia) throws ValorEnergeticoInvalidoException {
         this.nome = nome;
+        if (energia <= 0){
+            throw new ValorEnergeticoInvalidoException("Valor Inválido.");
+        }
         this.energia = energia;
         this.presas = new ArrayList<>();
         this.predadores = new ArrayList<>();

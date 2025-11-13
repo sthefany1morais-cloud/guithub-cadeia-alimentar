@@ -18,9 +18,10 @@ public abstract class Menu {
                 }
             } catch (Exception e){
                 //Ignora
+            } finally {
+                sc.nextLine();
             }
-            System.out.println("Erro. Digite uma resposta válida.");
-            sc.nextLine();
+            System.out.println("Resposta inválida.");
         }
         return opcao;
     }
@@ -37,7 +38,7 @@ public abstract class Menu {
                 }
 
             } catch (Exception e){
-                System.out.printf("\nErro. Digite apenas %s ou %s.", verdadeiro, falso);
+                System.out.printf("\nDigite apenas %s ou %s.", verdadeiro, falso);
             }
         }
         return resp == verdadeiro;
@@ -49,10 +50,11 @@ public abstract class Menu {
             System.out.print(msg);
             try{
                 num = sc.nextInt();
-                sc.nextLine();
                 break;
             } catch (Exception e) {
-                System.out.println("Erro. Digite um valor válido.");
+                System.out.println("Valor inválido");
+            }finally {
+                sc.nextLine();
             }
         } while (true);
         return num;
@@ -66,7 +68,7 @@ public abstract class Menu {
                 resposta = sc.nextLine();
                 break;
             } catch (Exception e) {
-                System.out.println("Erro. Digite um valor válido.");
+                System.out.println("Resposta inválida.");
             }
         } while (true);
         return resposta;

@@ -15,7 +15,7 @@ public class GrafoGerenciador {
     public void adicionarGrafo(String nome) throws GrafoJaExisteException {
         for (GrafoEcologico grafo: this.grafos){
             if (grafo.getNome().equalsIgnoreCase(nome)){
-                throw new GrafoJaExisteException("Erro. Essa cadeia já existe.");
+                throw new GrafoJaExisteException("Essa cadeia já existe.");
             }
         }
         grafos.add(new GrafoEcologico(nome));
@@ -23,14 +23,14 @@ public class GrafoGerenciador {
 
     public void removerGrafo(int idGrafo) throws GrafoInexistenteExeption {
         if (idGrafo < 0 || idGrafo > this.grafos.size()-1){
-            throw new GrafoInexistenteExeption("Erro. Digite um id válido.");
+            throw new GrafoInexistenteExeption("Digite um id válido.");
         }
         grafos.remove(idGrafo);
     }
 
     public GrafoController acessarGrafo(int idGrafo) throws GrafoInexistenteExeption{
         if (idGrafo < 0 || idGrafo > this.grafos.size()-1){
-            throw new GrafoInexistenteExeption("Erro. Digite um id válido.");
+            throw new GrafoInexistenteExeption("Digite um id válido.");
         }
         return new GrafoController(this.grafos.get(idGrafo));
     }

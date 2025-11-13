@@ -7,36 +7,37 @@ public class SistemaPrincipal {
     public static void main(String[] args) {
         GrafoGerenciador gerenciador = new GrafoGerenciador();
         System.out.println("🌿 Bem-vindo ao Forma.ly - Sistema de Ecossistemas 🌿\n");
+        while (true) {
+            int opcao = Menu.escolherOpcao("""
+                ===== MENU PRINCIPAL =====
+                1. Criar nova cadeia alimentar
+                2. Listar cadeias existentes
+                3. Acessar cadeia alimentar
+                4. Remover cadeia alimentar
+                5. Sair
+                Escolha uma opção:\s""", 1, 5);
 
-        int opcao = Menu.escolherOpcao("""
-            ===== MENU PRINCIPAL =====
-            1. Criar nova cadeia alimentar
-            2. Listar cadeias existentes
-            3. Acessar cadeia alimentar
-            4. Remover cadeia alimentar
-            5. Sair
-            Escolha uma opção: """, 1, 5);
-
-        try {
-            switch (opcao) {
-                case 1 -> criarGrafo(gerenciador);
-                case 2 -> listarGrafos(gerenciador);
-                case 3 -> acessarGrafo(gerenciador);
-                case 4 -> removerGrafo(gerenciador);
-                case 5 -> {
-                    System.out.println("Encerrando o sistema. Até logo!");
-                    return;
+            try {
+                switch (opcao) {
+                    case 1 -> criarGrafo(gerenciador);
+                    case 2 -> listarGrafos(gerenciador);
+                    case 3 -> acessarGrafo(gerenciador);
+                    case 4 -> removerGrafo(gerenciador);
+                    case 5 -> {
+                        System.out.println("Encerrando o sistema. Até logo!");
+                        return;
+                    }
                 }
+            } catch (Exception e) {
+                System.out.println("Erro: " + e.getMessage());
             }
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.getMessage());
         }
     }
 
     private static void criarGrafo(GrafoGerenciador g) throws GrafoJaExisteException {
         String nome = Menu.lerString("Digite o nome do novo grafo: ");
         g.adicionarGrafo(nome);
-        System.out.println("Grafo '" + nome + "' criado com sucesso!");
+        System.out.println("Cadeia alimentar '" + nome + "' criado com sucesso!");
     }
 
     private static void listarGrafos(GrafoGerenciador g) {
@@ -62,7 +63,7 @@ public class SistemaPrincipal {
         int id = Menu.lerInt("Digite o id do grafo que deseja acessar: ") - 1;
 
         GrafoController controller = g.acessarGrafo(id);
-        System.out.println("\n🌎 Acessando cadeia: " + controller.getNomeGrafo());
+        System.out.println("\nAcessando Cadeia alimentar: " + controller.getNomeGrafo());
         menuGrafo(controller);
     }
 
@@ -75,26 +76,32 @@ public class SistemaPrincipal {
                 3. Editar espécie
                 4. Mostrar espécies
                 5. Analisar ecossistema
-                0. Voltar
-                Escolha uma opção: 
-                """.formatted(c.getNomeGrafo()), 0, 5);
+                6. Voltar
+                Escolha uma opção:\s""".formatted(c.getNomeGrafo()), 0, 5);
 
             try {
                 switch (op) {
                     case 1 -> adicionarEspecie(c);
                     case 2 -> adicionarPredacao(c);
                     case 3 -> editarEspecie(c);
-                    case 4 -> System.out.println(c.listarEspeciesSimples());
+                    case 4 -> mostrarEspecies(c);
                     case 5 -> analisarEcossistema(c);
-                    case 0 -> { return; }
+                    case 6 -> { return; }
                 }
             } catch (Exception e) {
                 System.out.println("Erro: " + e.getMessage());
             }
         }
     }
+    private static void mostrarEspecies(GrafoController c){
+        if(c.getGrafo().getEspecies().isEmpty()){
+            System.out.println("(Cadeia vazia.)");
+        } else {
+            System.out.println(c.listarEspeciesSimples());
+        }
+    }
 
-    private static void adicionarEspecie(GrafoController c) throws EspecieJaExisteException {
+    private static void adicionarEspecie(GrafoController c) throws EspecieJaExisteException, EspecieNaoEncontradaException, ValorEnergeticoInvalidoException {
         int tipo = Menu.escolherOpcao("""
             Tipos disponíveis:
             1. Produtor
@@ -104,7 +111,6 @@ public class SistemaPrincipal {
 
         String nome = Menu.lerString("Nome da espécie: ");
         int energia = Menu.lerInt("Energia da espécie: ");
-
         Especie nova = switch (tipo) {
             case 1 -> new Produtor(nome, energia);
             case 2 -> new Consumidor(nome, energia);
@@ -114,6 +120,42 @@ public class SistemaPrincipal {
 
         c.adicionarEspecie(nova);
         System.out.println("Espécie adicionada com sucesso!");
+        if (Menu.confirmar("Deseja adicionar as relações de predação da espécie adora?", 'S', 'N')){
+
+            System.out.println("Predadores");
+            while (true){
+                System.out.println(c.listarEspeciesSimples());
+                int predador = Menu.lerInt("ID do predador: ");
+                int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
+
+                if (custo > 0)
+                    c.adicionarPredacao(predador, c.getGrafo().getIdPorEspecie(nova), custo);
+                else
+                    c.adicionarPredacao(predador, c.getGrafo().getIdPorEspecie(nova));
+
+                System.out.println("Predação registrada com sucesso!");
+                if (Menu.confirmar("Deseja continuar a adicionar predadores?", 'S', 'N')){
+                    break;
+                }
+            }
+
+            System.out.println("Presas");
+            while (true){
+                System.out.println(c.listarEspeciesSimples());
+                int presa = Menu.lerInt("ID da presa: ");
+                int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
+
+                if (custo > 0)
+                    c.adicionarPredacao(c.getGrafo().getIdPorEspecie(nova), presa, custo);
+                else
+                    c.adicionarPredacao(c.getGrafo().getIdPorEspecie(nova), presa);
+
+                System.out.println("Predação registrada com sucesso!");
+                if (Menu.confirmar("Deseja continuar a adicionar presas?", 'S', 'N')){
+                    break;
+                }
+            }
+        }
     }
 
     private static void adicionarPredacao(GrafoController c)
@@ -134,9 +176,11 @@ public class SistemaPrincipal {
     private static void editarEspecie(GrafoController c) throws EspecieNaoEncontradaException {
         System.out.println(c.listarEspeciesSimples());
         int id = Menu.lerInt("ID da espécie a editar: ");
+        Especie e = c.getGrafo().getEspeciePorId(id);
         String novoNome = Menu.lerString("Novo nome: ");
+        e.setNome(novoNome);
         int novaEnergia = Menu.lerInt("Nova energia: ");
-        c.editarEspecie(id, novoNome, novaEnergia);
+        e.setEnergia(novaEnergia);
         System.out.println("Espécie atualizada!");
     }
 
@@ -146,43 +190,43 @@ public class SistemaPrincipal {
             1. Listar ciclos
             2. Maior ciclo
             3. Menor ciclo
-            4. Maior caminho entre espécies
-            5. Menor caminho entre espécies
-            6. Melhor caminho energético
-            7. Avaliar bem-estar de espécie
-            0. Voltar
-            Escolha: """, 0, 7);
+            4. Melhor caminho entre duas espécies
+            5. Avaliar bem-estar de espécie
+            6. Voltar
+            Escolha:\s""", 0, 7);
+        boolean decomps = false;
 
-        boolean decomps = Menu.confirmar("Incluir decompositores?", 's', 'n');
-
+            if (op< 5){
+                decomps = Menu.confirmar("Incluir decompositores?", 'S', 'N');
+            }
         switch (op) {
             case 1 -> System.out.println(c.ciclos(decomps));
             case 2 -> System.out.println(c.maiorCiclo(decomps));
             case 3 -> System.out.println(c.menorCiclo(decomps));
-            case 4 -> caminhoMaiorMenor(c, true, decomps);
-            case 5 -> caminhoMaiorMenor(c, false, decomps);
-            case 6 -> caminhoEnergetico(c, decomps);
+            case 4 -> caminhoMelhor(c, decomps);
+            case 5 -> bemEstar(c);
             case 7 -> bemEstar(c);
         }
     }
 
-    private static void caminhoMaiorMenor(GrafoController c, boolean maior, boolean decomps)
+    private static void caminhoMelhor(GrafoController c, boolean decomps)
             throws Exception {
         System.out.println(c.listarEspeciesSimples());
+        String resultado;
         int o = Menu.lerInt("ID da origem: ");
         int d = Menu.lerInt("ID do destino: ");
-        String resultado = maior ? c.maiorCaminho(o, d, decomps) : c.menorCaminho(o, d, decomps);
+        boolean menor = Menu.confirmar("Deseja visualizar o menor caminho?", 'S', 'N');
+        boolean arestas = Menu.confirmar("Deseja considerar arestas?", 'S', 'N');
+        if (!arestas){
+            if (menor){
+                resultado = c.menorCaminho(o, d, decomps);
+            } else {
+                resultado = c.maiorCaminho(o, d, decomps);
+            }
+        }
+        boolean nos = Menu.confirmar("Deseja considerar peso dos nós?", 'S', 'N');
+        resultado = c.melhorCaminhoEnergetico(o, d, menor, nos, decomps);
         System.out.println(resultado);
-    }
-
-    private static void caminhoEnergetico(GrafoController c, boolean decomps)
-            throws Exception {
-        System.out.println(c.listarEspeciesSimples());
-        int o = Menu.lerInt("ID da origem: ");
-        int d = Menu.lerInt("ID do destino: ");
-        boolean menor = Menu.confirmar("Buscar menor caminho energético?", 's', 'n');
-        boolean custo = Menu.confirmar("Usar custo (s) ou ganho (n)?", 's', 'n');
-        System.out.println(c.melhorCaminhoEnergetico(o, d, menor, custo, decomps));
     }
 
     private static void bemEstar(GrafoController c) throws EspecieNaoEncontradaException {

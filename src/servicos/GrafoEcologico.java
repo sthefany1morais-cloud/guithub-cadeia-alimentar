@@ -33,10 +33,10 @@ public class GrafoEcologico {
         Especie presa = getEspeciePorId(idPresa);
 
         if (custo < 0){
-            throw new ValorEnergeticoInvalidoException("Erro. O custo energético não pode ser negativo.");
+            throw new ValorEnergeticoInvalidoException("O custo energético não pode ser negativo.");
         }
         if (custo == 0){
-            throw new ValorEnergeticoInvalidoException("Erro. O custo energético não pode ser zero.");
+            throw new ValorEnergeticoInvalidoException("O custo energético não pode ser zero.");
         }
         predador.adicionarPresa(presa,custo);
     }
@@ -49,20 +49,9 @@ public class GrafoEcologico {
         predador.adicionarPresa(presa);
     }
 
-    public void editarEspecie(int idEspecie, String novoNome, int novaEnergia) throws  EspecieNaoEncontradaException{
-        if (this.especies.isEmpty()){
-            throw new EspecieNaoEncontradaException("Erro. Nenhuma espécie foi cadastrada ainda.");
-        } else if (idEspecie < 1 || idEspecie > this.especies.size()){
-            throw new EspecieNaoEncontradaException("Id inválido. Digite um número entre 1 e "+ this.especies.size());
-        }
-        Especie e = getEspeciePorId(idEspecie);
-        e.setNome(novoNome);
-        e.setEnergia(novaEnergia);
-    }
-
     public Especie getEspeciePorId(int id) throws EspecieNaoEncontradaException {
         if (this.especies.isEmpty()){
-            throw new EspecieNaoEncontradaException("Erro. Nenhuma espécie foi cadastrada ainda.");
+            throw new EspecieNaoEncontradaException("Nenhuma espécie foi cadastrada ainda.");
         }
         else if (id < 0 || id > this.especies.size()-1){
             throw new EspecieNaoEncontradaException("Id inválido. Digite um número entre 1 e "+ this.especies.size());
@@ -72,12 +61,12 @@ public class GrafoEcologico {
 
     public int getIdPorEspecie(Especie e) throws EspecieNaoEncontradaException{
         if (this.especies.isEmpty()){
-            throw new EspecieNaoEncontradaException("Erro. Nenhuma espécie foi cadastrada ainda.");
+            throw new EspecieNaoEncontradaException("Nenhuma espécie foi cadastrada ainda.");
         } else if (this.especies.contains(e)){
             return this.especies.indexOf(e);
         }
         else {
-            throw new EspecieNaoEncontradaException("Erro. Espécie não encontrada.");
+            throw new EspecieNaoEncontradaException("Espécie não encontrada.");
         }
     }
 

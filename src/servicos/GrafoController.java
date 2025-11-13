@@ -21,6 +21,10 @@ public class GrafoController {
         grafo.setNome(nome);
     }
 
+    public GrafoEcologico getGrafo() {
+        return grafo;
+    }
+
     public void adicionarEspecie(Especie e) throws EspecieJaExisteException {
         grafo.adicionarEspecie(e);
     }
@@ -35,10 +39,6 @@ public class GrafoController {
         grafo.adicionarPredacao(idPredador, idPresa);
     }
 
-    public void editarEspecie(int id, String novoNome, int novaEnergia)
-            throws EspecieNaoEncontradaException {
-        grafo.editarEspecie(id, novoNome, novaEnergia);
-    }
 
     public String listarEspeciesSimples() {
         StringBuilder texto = new StringBuilder();
