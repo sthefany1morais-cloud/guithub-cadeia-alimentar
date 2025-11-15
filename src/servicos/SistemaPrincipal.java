@@ -5,8 +5,11 @@ import execoes.*;
 
 public class SistemaPrincipal {
     public static void main(String[] args) {
-        GrafoGerenciador gerenciador = new GrafoGerenciador();
-        System.out.println("🌿 Bem-vindo ao Forma.ly - Sistema de Ecossistemas 🌿\n");
+
+        GrafoGerenciadorDAO dao = new GrafoGerenciadorDAO();
+        GrafoGerenciador gerenciador = dao.carregar();
+
+        System.out.println("🌿 Bem-vindo ao CiBac.ly - Sistema de Ecossistemas 🌿\n");
         while (true) {
             int opcao = Menu.escolherOpcao("""
                 ===== MENU PRINCIPAL =====
@@ -24,6 +27,7 @@ public class SistemaPrincipal {
                     case 3 -> acessarGrafo(gerenciador);
                     case 4 -> removerGrafo(gerenciador);
                     case 5 -> {
+                        dao.salvar(gerenciador);
                         System.out.println("Encerrando o sistema. Até logo!");
                         return;
                     }
@@ -54,13 +58,13 @@ public class SistemaPrincipal {
         if (g.getTamanho() == 0) return;
         int id = Menu.lerInt("Digite o id do grafo a remover: ") - 1;
         g.removerGrafo(id);
-        System.out.println("Grafo removido com sucesso.");
+        System.out.println("Cadeia removida com sucesso.");
     }
 
     private static void acessarGrafo(GrafoGerenciador g) throws GrafoInexistenteExeption {
         listarGrafos(g);
         if (g.getTamanho() == 0) return;
-        int id = Menu.lerInt("Digite o id do grafo que deseja acessar: ") - 1;
+        int id = Menu.lerInt("Digite o id da caideia que deseja acessar: ") - 1;
 
         GrafoController controller = g.acessarGrafo(id);
         System.out.println("\nAcessando Cadeia alimentar: " + controller.getNomeGrafo());
@@ -72,27 +76,30 @@ public class SistemaPrincipal {
             int op = Menu.escolherOpcao("""
                 ===== MENU DA CADEIA '%s' =====
                 1. Adicionar espécie
-                2. Criar relação de predação
-                3. Editar espécie
-                4. Mostrar espécies
-                5. Analisar ecossistema
-                6. Voltar
-                Escolha uma opção:\s""".formatted(c.getNomeGrafo()), 0, 5);
+                2. Acessar uma espécie
+                3. Criar relação de predação
+                4. Editar espécie
+                5. Mostrar espécies
+                6. Analisar ecossistema
+                7. Voltar
+                Escolha uma opção:\s""".formatted(c.getNomeGrafo()), 1, 7);
 
             try {
                 switch (op) {
                     case 1 -> adicionarEspecie(c);
-                    case 2 -> adicionarPredacao(c);
-                    case 3 -> editarEspecie(c);
-                    case 4 -> mostrarEspecies(c);
-                    case 5 -> analisarEcossistema(c);
-                    case 6 -> { return; }
+                    case 2 -> acessarEspecie(c);
+                    case 3 -> adicionarPredacao(c);
+                    case 4 -> editarEspecie(c);
+                    case 5 -> mostrarEspecies(c);
+                    case 6 -> analisarEcossistema(c);
+                    case 7 -> { return; }
                 }
             } catch (Exception e) {
                 System.out.println("Erro: " + e.getMessage());
             }
         }
     }
+
     private static void mostrarEspecies(GrafoController c){
         if(c.getGrafo().getEspecies().isEmpty()){
             System.out.println("(Cadeia vazia.)");
@@ -158,8 +165,32 @@ public class SistemaPrincipal {
         }
     }
 
-    private static void adicionarPredacao(GrafoController c)
-            throws EspecieNaoEncontradaException, ValorEnergeticoInvalidoException {
+    private static void acessarEspecie(GrafoController c) throws EspecieNaoEncontradaException{
+        mostrarEspecies(c);
+        int id = Menu.lerInt("Digite o id da espécie que deseja acessar: ");
+        Especie esp = c.getGrafo().getEspeciePorId(id);
+        System.out.println(esp);
+        while (true) {
+            int op = Menu.escolherOpcao("""
+                ===== ESPÉCIE '%s' =====
+                1. Visualizar presas
+                2. Visualizar predadores
+                3. Voltar
+                Escolha uma opção:\s""".formatted(esp), 1, 3);
+
+            try {
+                switch (op) {
+                    case 1 -> System.out.println(c.listarPresas(id));
+                    case 2 -> System.out.println(c.listarPredadores(id));
+                    case 3 -> { return; }
+                }
+            } catch (Exception e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
+        }
+    }
+
+    private static void adicionarPredacao(GrafoController c) throws EspecieNaoEncontradaException, ValorEnergeticoInvalidoException {
         System.out.println(c.listarEspeciesSimples());
         int predador = Menu.lerInt("ID do predador: ");
         int presa = Menu.lerInt("ID da presa: ");
@@ -185,32 +216,33 @@ public class SistemaPrincipal {
     }
 
     private static void analisarEcossistema(GrafoController c) throws Exception {
-        int op = Menu.escolherOpcao("""
-            ===== ANÁLISES DISPONÍVEIS =====
-            1. Listar ciclos
-            2. Maior ciclo
-            3. Menor ciclo
-            4. Melhor caminho entre duas espécies
-            5. Avaliar bem-estar de espécie
-            6. Voltar
-            Escolha:\s""", 0, 7);
-        boolean decomps = false;
+        while (true) {
+            int op = Menu.escolherOpcao("""
+                    ===== ANÁLISES DISPONÍVEIS =====
+                    1. Listar ciclos
+                    2. Maior ciclo
+                    3. Menor ciclo
+                    4. Melhor caminho entre duas espécies
+                    5. Avaliar bem-estar de espécie
+                    6. Voltar
+                    Escolha:\s""", 1, 6);
+            boolean decomps = false;
 
-            if (op< 5){
+            if (op < 5) {
                 decomps = Menu.confirmar("Incluir decompositores?", 'S', 'N');
             }
-        switch (op) {
-            case 1 -> System.out.println(c.ciclos(decomps));
-            case 2 -> System.out.println(c.maiorCiclo(decomps));
-            case 3 -> System.out.println(c.menorCiclo(decomps));
-            case 4 -> caminhoMelhor(c, decomps);
-            case 5 -> bemEstar(c);
-            case 7 -> bemEstar(c);
+            switch (op) {
+                case 1 -> System.out.println(c.ciclos(decomps));
+                case 2 -> System.out.println(c.maiorCiclo(decomps));
+                case 3 -> System.out.println(c.menorCiclo(decomps));
+                case 4 -> caminhoMelhor(c, decomps);
+                case 5 -> bemEstar(c);
+                case 6 -> {return;}
+            }
         }
     }
 
-    private static void caminhoMelhor(GrafoController c, boolean decomps)
-            throws Exception {
+    private static void caminhoMelhor(GrafoController c, boolean decomps) throws Exception {
         System.out.println(c.listarEspeciesSimples());
         String resultado;
         int o = Menu.lerInt("ID da origem: ");

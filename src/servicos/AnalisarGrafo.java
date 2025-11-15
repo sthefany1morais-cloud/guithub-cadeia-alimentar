@@ -17,8 +17,6 @@ public class AnalisarGrafo {
     public List<List<Especie>> detectarCiclos(boolean considerarDecompositores) {
         List<List<Especie>> ciclosEncontrados = new ArrayList<>();
 
-        Set<Especie> visitadoGlobal = new HashSet<>();
-
         for (Especie inicio : grafo.getEspecies()) {
             dfsCiclos(inicio, new HashSet<>(), new ArrayList<>(), ciclosEncontrados, considerarDecompositores);
         }
@@ -348,7 +346,7 @@ public class AnalisarGrafo {
             perdaRelativa += perda;
         }
 
-        double ibe = ganhoRelativo - (perdaRelativa*penalidade);
+        double ibe = (ganhoRelativo/penalidade) - (perdaRelativa);
 
         String status;
         if (ibe > 0.25) {
