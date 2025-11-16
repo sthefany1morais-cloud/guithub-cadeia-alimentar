@@ -4,6 +4,11 @@ import execoes.ValorEnergeticoInvalidoException;
 
 public class Decompositor extends Especie{
     private double porcentagem;
+
+    public Decompositor(){
+        super();
+    }
+
     public Decompositor(String nome, int energia) throws ValorEnergeticoInvalidoException {
         super(nome, energia);
         this.porcentagem = 0.1;

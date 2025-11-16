@@ -1,5 +1,7 @@
 package servicos;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import model.Aresta;
 import model.especies.Especie;
 import execoes.EspecieJaExisteException;
@@ -9,9 +11,15 @@ import execoes.ValorEnergeticoInvalidoException;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
+
 public class GrafoEcologico {
     private List<Especie> especies;
     private String nome;
+
+    public GrafoEcologico() {
+        this.especies = new ArrayList<>();
+    }
 
     public GrafoEcologico(String nome){
         this.nome = nome;
@@ -53,7 +61,7 @@ public class GrafoEcologico {
         if (this.especies.isEmpty()){
             throw new EspecieNaoEncontradaException("Nenhuma espécie foi cadastrada ainda.");
         }
-        else if (id < 0 || id > this.especies.size()-1){
+        else if (id <= 0 || id > this.especies.size()){
             throw new EspecieNaoEncontradaException("Id inválido. Digite um número entre 1 e "+ this.especies.size());
         }
         return this.especies.get(id-1);

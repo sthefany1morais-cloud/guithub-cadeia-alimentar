@@ -1,10 +1,26 @@
 package model.especies;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import execoes.ValorEnergeticoInvalidoException;
 import model.Aresta;
 
 import java.util.ArrayList;
 import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "tipo"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Produtor.class, name = "produtor"),
+        @JsonSubTypes.Type(value = Consumidor.class, name = "consumidor"),
+        @JsonSubTypes.Type(value = Decompositor.class, name = "decompositor")
+})
 
 public abstract class Especie {
     protected String nome;
@@ -12,6 +28,10 @@ public abstract class Especie {
     protected int energia;
     protected List<Aresta> presas;
     protected List<Aresta> predadores;
+
+    public Especie(){
+
+    }
 
     public Especie(String nome, int energia) throws ValorEnergeticoInvalidoException {
         this.nome = nome;

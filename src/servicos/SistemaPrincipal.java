@@ -8,7 +8,6 @@ public class SistemaPrincipal {
 
         GrafoGerenciadorDAO dao = new GrafoGerenciadorDAO();
         GrafoGerenciador gerenciador = dao.carregar();
-
         System.out.println("🌿 Bem-vindo ao CiBac.ly - Sistema de Ecossistemas 🌿\n");
         while (true) {
             int opcao = Menu.escolherOpcao("""
@@ -17,7 +16,7 @@ public class SistemaPrincipal {
                 2. Listar cadeias existentes
                 3. Acessar cadeia alimentar
                 4. Remover cadeia alimentar
-                5. Sair
+                5. Salvar e sair
                 Escolha uma opção:\s""", 1, 5);
 
             try {
@@ -39,9 +38,9 @@ public class SistemaPrincipal {
     }
 
     private static void criarGrafo(GrafoGerenciador g) throws GrafoJaExisteException {
-        String nome = Menu.lerString("Digite o nome do novo grafo: ");
+        String nome = Menu.lerString("Digite o nome da nova cadeia: ");
         g.adicionarGrafo(nome);
-        System.out.println("Cadeia alimentar '" + nome + "' criado com sucesso!");
+        System.out.println("Cadeia alimentar '" + nome + "' criada com sucesso!");
     }
 
     private static void listarGrafos(GrafoGerenciador g) {
@@ -50,7 +49,7 @@ public class SistemaPrincipal {
             System.out.println(s);
         }
         if (g.getTamanho() == 0)
-            System.out.println("(nenhum grafo cadastrado)");
+            System.out.println("(nenhuma cadeia cadastrada)");
     }
 
     private static void removerGrafo(GrafoGerenciador g) throws GrafoInexistenteExeption {
@@ -78,21 +77,19 @@ public class SistemaPrincipal {
                 1. Adicionar espécie
                 2. Acessar uma espécie
                 3. Criar relação de predação
-                4. Editar espécie
-                5. Mostrar espécies
-                6. Analisar ecossistema
-                7. Voltar
-                Escolha uma opção:\s""".formatted(c.getNomeGrafo()), 1, 7);
+                4. Mostrar espécies
+                5. Analisar ecossistema
+                6. Voltar
+                Escolha uma opção:\s""".formatted(c.getNomeGrafo()), 1, 6);
 
             try {
                 switch (op) {
                     case 1 -> adicionarEspecie(c);
                     case 2 -> acessarEspecie(c);
                     case 3 -> adicionarPredacao(c);
-                    case 4 -> editarEspecie(c);
-                    case 5 -> mostrarEspecies(c);
-                    case 6 -> analisarEcossistema(c);
-                    case 7 -> { return; }
+                    case 4 -> mostrarEspecies(c);
+                    case 5 -> analisarEcossistema(c);
+                    case 6 -> {return;}
                 }
             } catch (Exception e) {
                 System.out.println("Erro: " + e.getMessage());
@@ -114,7 +111,7 @@ public class SistemaPrincipal {
             1. Produtor
             2. Consumidor
             3. Decompositor
-            Escolha o tipo: """, 1, 3);
+            Escolha o tipo:\s""", 1, 3);
 
         String nome = Menu.lerString("Nome da espécie: ");
         int energia = Menu.lerInt("Energia da espécie: ");
@@ -128,38 +125,42 @@ public class SistemaPrincipal {
         c.adicionarEspecie(nova);
         System.out.println("Espécie adicionada com sucesso!");
         if (Menu.confirmar("Deseja adicionar as relações de predação da espécie adora?", 'S', 'N')){
+            if (Menu.confirmar("Deseja adicionar os predadores da espécie agora?", 'S', 'N')) {
+                System.out.println("Lista de possíveis Predadores:\n");
+                while (true) {
+                    System.out.println(c.listarEspeciesSimples());
+                    int predador = Menu.lerInt("ID do predador: ");
+                    int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
 
-            System.out.println("Predadores");
-            while (true){
-                System.out.println(c.listarEspeciesSimples());
-                int predador = Menu.lerInt("ID do predador: ");
-                int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
+                    if (custo > 0)
+                        c.adicionarPredacao(predador, c.getGrafo().getIdPorEspecie(nova), custo);
+                    else
+                        c.adicionarPredacao(predador, c.getGrafo().getIdPorEspecie(nova));
 
-                if (custo > 0)
-                    c.adicionarPredacao(predador, c.getGrafo().getIdPorEspecie(nova), custo);
-                else
-                    c.adicionarPredacao(predador, c.getGrafo().getIdPorEspecie(nova));
-
-                System.out.println("Predação registrada com sucesso!");
-                if (Menu.confirmar("Deseja continuar a adicionar predadores?", 'S', 'N')){
-                    break;
+                    System.out.println("Predação registrada com sucesso!");
+                    if (Menu.confirmar("Deseja continuar a adicionar predadores?", 'S', 'N')) {
+                        break;
+                    }
                 }
             }
 
-            System.out.println("Presas");
-            while (true){
-                System.out.println(c.listarEspeciesSimples());
-                int presa = Menu.lerInt("ID da presa: ");
-                int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
+            if (Menu.confirmar("Deseja adicionar as presas da espécie agora?", 'S', 'N')) {
 
-                if (custo > 0)
-                    c.adicionarPredacao(c.getGrafo().getIdPorEspecie(nova), presa, custo);
-                else
-                    c.adicionarPredacao(c.getGrafo().getIdPorEspecie(nova), presa);
+                System.out.println("Lista de possíveis Presas:\n");
+                while (true) {
+                    System.out.println(c.listarEspeciesSimples());
+                    int presa = Menu.lerInt("ID da presa: ");
+                    int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
 
-                System.out.println("Predação registrada com sucesso!");
-                if (Menu.confirmar("Deseja continuar a adicionar presas?", 'S', 'N')){
-                    break;
+                    if (custo > 0)
+                        c.adicionarPredacao(c.getGrafo().getIdPorEspecie(nova), presa, custo);
+                    else
+                        c.adicionarPredacao(c.getGrafo().getIdPorEspecie(nova), presa);
+
+                    System.out.println("Predação registrada com sucesso!");
+                    if (Menu.confirmar("Deseja continuar a adicionar presas?", 'S', 'N')) {
+                        break;
+                    }
                 }
             }
         }
@@ -176,7 +177,7 @@ public class SistemaPrincipal {
                 1. Visualizar presas
                 2. Visualizar predadores
                 3. Voltar
-                Escolha uma opção:\s""".formatted(esp), 1, 3);
+                Escolha uma opção:\s""".formatted(esp.especieSimplificada()), 1, 3);
 
             try {
                 switch (op) {
@@ -202,17 +203,6 @@ public class SistemaPrincipal {
             c.adicionarPredacao(predador, presa);
 
         System.out.println("Predação registrada com sucesso!");
-    }
-
-    private static void editarEspecie(GrafoController c) throws EspecieNaoEncontradaException {
-        System.out.println(c.listarEspeciesSimples());
-        int id = Menu.lerInt("ID da espécie a editar: ");
-        Especie e = c.getGrafo().getEspeciePorId(id);
-        String novoNome = Menu.lerString("Novo nome: ");
-        e.setNome(novoNome);
-        int novaEnergia = Menu.lerInt("Nova energia: ");
-        e.setEnergia(novaEnergia);
-        System.out.println("Espécie atualizada!");
     }
 
     private static void analisarEcossistema(GrafoController c) throws Exception {

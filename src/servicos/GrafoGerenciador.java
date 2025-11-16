@@ -1,10 +1,13 @@
 package servicos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import execoes.GrafoInexistenteExeption;
 import execoes.GrafoJaExisteException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class GrafoGerenciador {
     private List<GrafoEcologico> grafos;
@@ -12,6 +15,7 @@ public class GrafoGerenciador {
     public GrafoGerenciador(){
         this.grafos = new ArrayList<>();
     }
+
     public void adicionarGrafo(String nome) throws GrafoJaExisteException {
         for (GrafoEcologico grafo: this.grafos){
             if (grafo.getNome().equalsIgnoreCase(nome)){

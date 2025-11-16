@@ -31,7 +31,7 @@ public abstract class Menu {
         while (true) {
             System.out.print(pergunta + " (" + verdadeiro + "/" + falso + "): ");
             try {
-                String entrada = sc.nextLine().trim().toLowerCase();
+                String entrada = sc.nextLine().trim().toUpperCase();
                 resp = entrada.charAt(0);
                 if (resp == verdadeiro || resp == falso){
                 break;

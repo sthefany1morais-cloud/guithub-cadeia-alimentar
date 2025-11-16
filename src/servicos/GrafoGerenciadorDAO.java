@@ -1,38 +1,46 @@
 package servicos;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.File;
 
 public class GrafoGerenciadorDAO {
 
     private static final String ARQUIVO = "cibacly.json";
-    private final Gson gson;
+    private final ObjectMapper mapper;
 
     public GrafoGerenciadorDAO() {
-        gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+        mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+
+        // Permite que o Jackson serialize inclusive atributos private sem getters
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
     }
 
     public void salvar(GrafoGerenciador gerenciador) {
-        try (FileWriter writer = new FileWriter(ARQUIVO)) {
-            gson.toJson(gerenciador, writer);
-        } catch (IOException e) {
+        try {
+            mapper.writeValue(new File(ARQUIVO), gerenciador);
+            System.out.println("Dados salvos com sucesso!");
+        } catch (Exception e) {
             System.out.println("Erro ao salvar dados: " + e.getMessage());
         }
     }
 
     public GrafoGerenciador carregar() {
-        try (FileReader reader = new FileReader(ARQUIVO)) {
-            return gson.fromJson(reader, GrafoGerenciador.class);
+        try {
+            File f = new File(ARQUIVO);
+            if (!f.exists()) {
+                System.out.println("Nenhum arquivo salvo encontrado. Criando novo gerenciador...");
+                return new GrafoGerenciador();
+            }
+            return mapper.readValue(f, GrafoGerenciador.class);
         } catch (Exception e) {
-            System.out.println("Nenhum arquivo salvo encontrado. Criando novo gerenciador...");
+            System.out.println("Erro ao carregar dados, usando gerenciador vazio.");
+            System.out.println("Detalhes: " + e.getMessage());
             return new GrafoGerenciador();
         }
     }
 }
-
