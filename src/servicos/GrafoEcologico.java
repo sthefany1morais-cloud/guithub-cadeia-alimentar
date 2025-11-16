@@ -1,6 +1,7 @@
 package servicos;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import model.Aresta;
 import model.especies.Especie;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class GrafoEcologico {
     private List<Especie> especies;
@@ -21,14 +23,14 @@ public class GrafoEcologico {
         this.especies = new ArrayList<>();
     }
 
-    public GrafoEcologico(String nome){
+    public GrafoEcologico(String nome) {
         this.nome = nome;
         this.especies = new ArrayList<>();
     }
 
     public void adicionarEspecie(Especie especie) throws EspecieJaExisteException {
-        for (Especie e: this.especies) {
-            if (especie.getNome().equalsIgnoreCase(e.getNome())){
+        for (Especie e : this.especies) {
+            if (especie.getNome().equalsIgnoreCase(e.getNome())) {
                 throw new EspecieJaExisteException("A espécie " + especie.getNome() + " já está cadastrada na cadeia alimentar.");
             }
         }
@@ -40,16 +42,16 @@ public class GrafoEcologico {
         Especie predador = getEspeciePorId(idPredador);
         Especie presa = getEspeciePorId(idPresa);
 
-        if (custo < 0){
+        if (custo < 0) {
             throw new ValorEnergeticoInvalidoException("O custo energético não pode ser negativo.");
         }
-        if (custo == 0){
+        if (custo == 0) {
             throw new ValorEnergeticoInvalidoException("O custo energético não pode ser zero.");
         }
-        predador.adicionarPresa(presa,custo);
+        predador.adicionarPresa(presa, custo);
     }
 
-    public void adicionarPredacao(int idPredador, int idPresa) throws EspecieNaoEncontradaException{
+    public void adicionarPredacao(int idPredador, int idPresa) throws EspecieNaoEncontradaException {
 
         Especie predador = getEspeciePorId(idPredador);
         Especie presa = getEspeciePorId(idPresa);
@@ -58,22 +60,20 @@ public class GrafoEcologico {
     }
 
     public Especie getEspeciePorId(int id) throws EspecieNaoEncontradaException {
-        if (this.especies.isEmpty()){
+        if (this.especies.isEmpty()) {
             throw new EspecieNaoEncontradaException("Nenhuma espécie foi cadastrada ainda.");
+        } else if (id <= 0 || id > this.especies.size()) {
+            throw new EspecieNaoEncontradaException("Id inválido. Digite um número entre 1 e " + this.especies.size());
         }
-        else if (id <= 0 || id > this.especies.size()){
-            throw new EspecieNaoEncontradaException("Id inválido. Digite um número entre 1 e "+ this.especies.size());
-        }
-        return this.especies.get(id-1);
+        return this.especies.get(id - 1);
     }
 
-    public int getIdPorEspecie(Especie e) throws EspecieNaoEncontradaException{
-        if (this.especies.isEmpty()){
+    public int getIdPorEspecie(Especie e) throws EspecieNaoEncontradaException {
+        if (this.especies.isEmpty()) {
             throw new EspecieNaoEncontradaException("Nenhuma espécie foi cadastrada ainda.");
-        } else if (this.especies.contains(e)){
+        } else if (this.especies.contains(e)) {
             return this.especies.indexOf(e);
-        }
-        else {
+        } else {
             throw new EspecieNaoEncontradaException("Espécie não encontrada.");
         }
     }
@@ -90,44 +90,26 @@ public class GrafoEcologico {
         this.nome = nome;
     }
 
-    public List<String> listarEspeciesSimples(){
+    public List<String> listarEspeciesSimples() {
         List<String> lista = new ArrayList<>();
-        for (int i = 0; i< this.especies.size(); i++){
+        for (int i = 0; i < this.especies.size(); i++) {
             Especie e = this.especies.get(i);
-            lista.add(e.especieSimplificada(i+1));
+            lista.add(e.especieSimplificada(i + 1));
         }
         return lista;
     }
 
-    public List<String> listarPresas(Especie e){
+    public List<String> listarPresas(Especie e) {
         List<String> lista = new ArrayList<>();
-        for (Aresta a: e.getPresas()){
+        for (Aresta a : e.getPresas()) {
             lista.add(a.toString());
         }
         return lista;
     }
 
-    public List<String> listarPredadores(Especie e){
+    public List<String> listarPredadores(Especie e) {
         List<String> lista = new ArrayList<>();
-        for (Aresta a: e.getPredadores()){
-            lista.add(a.toString());
-        }
-        return lista;
-    }
-
-    public List<String> listarArestasPredadores(Especie e){
-        List<String> lista = new ArrayList<>();
-        for (int i = 0; i< e.getPredadores().size(); i++){
-            Aresta a = e.getPredadores().get(i);
-            lista.add(a.toString());
-        }
-        return lista;
-    }
-
-    public List<String> listarArestasPresas(Especie e){
-        List<String> lista = new ArrayList<>();
-        for (int i = 0; i< e.getPresas().size(); i++){
-            Aresta a = e.getPresas().get(i);
+        for (Aresta a : e.getPredadores()) {
             lista.add(a.toString());
         }
         return lista;

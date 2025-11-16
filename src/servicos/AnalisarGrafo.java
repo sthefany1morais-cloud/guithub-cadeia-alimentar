@@ -328,23 +328,14 @@ public class AnalisarGrafo {
     public String avaliarBemEstar(int idEspecie) throws EspecieNaoEncontradaException {
         Especie especie = this.grafo.getEspeciePorId(idEspecie);
 
-        double ganhoRelativo = 0;
-        double perdaRelativa = 0;
         float penalidade = 1;
 
         if (especie.getTipo().equalsIgnoreCase("Decompositor")){
             penalidade = 2;
         }
 
-        for (Aresta a : especie.getPresas()) {
-            double ganho = (double) a.getGanhoEnergeticoLiquido() / especie.getEnergia();
-            ganhoRelativo += ganho;
-        }
-
-        for (Aresta a : especie.getPredadores()) {
-            double perda = (double) a.getCustoEnergetico() / especie.getEnergia();
-            perdaRelativa += perda;
-        }
+        double ganhoRelativo = especie.getGanhoTotal()/penalidade;
+        double perdaRelativa = especie.getPerdaTotal();
 
         double ibe = (ganhoRelativo/penalidade) - (perdaRelativa);
 

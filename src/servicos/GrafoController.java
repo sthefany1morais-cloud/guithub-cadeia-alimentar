@@ -17,10 +17,6 @@ public class GrafoController {
         return grafo.getNome();
     }
 
-    public void setNomeGrafo(String nome){
-        grafo.setNome(nome);
-    }
-
     public GrafoEcologico getGrafo() {
         return grafo;
     }
@@ -64,11 +60,6 @@ public class GrafoController {
             texto.append(presa);
         }
         return texto.toString();
-    }
-
-    public String mostrarEspecie(int idEspecie) throws EspecieNaoEncontradaException{
-        Especie e = grafo.getEspeciePorId(idEspecie);
-        return e.toString();
     }
 
     public String maiorCaminho(int origem, int destino, boolean decompositores)

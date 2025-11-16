@@ -104,10 +104,18 @@ public abstract class Especie {
     }
 
     public int getGanhoTotal() {
+        if (this.presas.isEmpty()){
+            return 0;
+        }
          return (getPresas().stream().mapToInt(Aresta::getGanhoEnergeticoLiquido).sum());
     }
 
     public int getPerdaTotal() {
+
+        if (this.predadores.isEmpty()){
+            return 0;
+        }
+
         return getPredadores().stream().mapToInt(Aresta::getCustoEnergetico).sum();  // Soma dos custos de ser presa
     }
 
@@ -129,13 +137,5 @@ public abstract class Especie {
 
     public String getTipo() {
         return tipo;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setEnergia(int energia) {
-        this.energia = energia;
     }
 }

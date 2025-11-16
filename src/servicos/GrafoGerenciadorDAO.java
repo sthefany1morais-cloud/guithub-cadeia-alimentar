@@ -15,8 +15,6 @@ public class GrafoGerenciadorDAO {
     public GrafoGerenciadorDAO() {
         mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-
-        // Permite que o Jackson serialize inclusive atributos private sem getters
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
     }
 
