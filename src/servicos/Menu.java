@@ -66,10 +66,12 @@ public abstract class Menu {
             System.out.print(msg);
             try {
                 resposta = sc.nextLine();
+                if (!resposta.isEmpty())
                 break;
             } catch (Exception e) {
-                System.out.println("Resposta inválida.");
+                //ignora
             }
+            System.out.println("Resposta inválida.");
         } while (true);
         return resposta;
     }
