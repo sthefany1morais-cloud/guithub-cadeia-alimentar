@@ -10,6 +10,9 @@ public class FilaDePrioridade {
     private boolean procurarMenor;
     private List<Item> lista;
 
+    public FilaDePrioridade() {
+    }
+
     public FilaDePrioridade(boolean procurarMenor) {
         this.procurarMenor = procurarMenor; // true = menor, false = maior
         this.lista = new ArrayList<>();

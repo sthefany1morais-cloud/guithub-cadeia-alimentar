@@ -1,8 +1,10 @@
 package model.especies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import execoes.PredacaoJaExistenteException;
 import execoes.ValorEnergeticoInvalidoException;
 import model.Aresta;
 
@@ -26,7 +28,10 @@ public abstract class Especie {
     protected String nome;
     protected String tipo;
     protected int energia;
+    @JsonManagedReference("predador-ref")
     protected List<Aresta> presas;
+
+    @JsonManagedReference("presa-ref")
     protected List<Aresta> predadores;
 
     public Especie(){

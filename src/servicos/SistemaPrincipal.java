@@ -1,5 +1,6 @@
 package servicos;
 
+import model.Aresta;
 import model.especies.*;
 import execoes.*;
 
@@ -105,7 +106,7 @@ public class SistemaPrincipal {
         }
     }
 
-    private static void adicionarEspecie(GrafoController c) throws EspecieJaExisteException, EspecieNaoEncontradaException, ValorEnergeticoInvalidoException {
+    private static void adicionarEspecie(GrafoController c) throws EspecieJaExisteException, ValorEnergeticoInvalidoException {
         int tipo = Menu.escolherOpcao("""
             Tipos disponíveis:
             1. Produtor
@@ -124,50 +125,13 @@ public class SistemaPrincipal {
 
         c.adicionarEspecie(nova);
         System.out.println("Espécie adicionada com sucesso!");
-        if (Menu.confirmar("Deseja adicionar as relações de predação da espécie adora?", 'S', 'N')){
-            if (Menu.confirmar("Deseja adicionar os predadores da espécie agora?", 'S', 'N')) {
-                System.out.println("Lista de possíveis Predadores:\n");
-                while (true) {
-                    System.out.println(c.listarEspeciesSimples());
-                    int predador = Menu.lerInt("ID do predador: ");
-                    int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
-
-                    if (custo > 0)
-                        c.adicionarPredacao(predador, c.getGrafo().getIdPorEspecie(nova), custo);
-                    else
-                        c.adicionarPredacao(predador, c.getGrafo().getIdPorEspecie(nova));
-
-                    System.out.println("Predação registrada com sucesso!");
-                    if (Menu.confirmar("Deseja continuar a adicionar predadores?", 'S', 'N')) {
-                        break;
-                    }
-                }
-            }
-
-            if (Menu.confirmar("Deseja adicionar as presas da espécie agora?", 'S', 'N')) {
-
-                System.out.println("Lista de possíveis Presas:\n");
-                while (true) {
-                    System.out.println(c.listarEspeciesSimples());
-                    int presa = Menu.lerInt("ID da presa: ");
-                    int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
-
-                    if (custo > 0)
-                        c.adicionarPredacao(c.getGrafo().getIdPorEspecie(nova), presa, custo);
-                    else
-                        c.adicionarPredacao(c.getGrafo().getIdPorEspecie(nova), presa);
-
-                    System.out.println("Predação registrada com sucesso!");
-                    if (Menu.confirmar("Deseja continuar a adicionar presas?", 'S', 'N')) {
-                        break;
-                    }
-                }
-            }
-        }
     }
 
     private static void acessarEspecie(GrafoController c) throws EspecieNaoEncontradaException{
         mostrarEspecies(c);
+        if (c.getGrafo().getEspecies().isEmpty()) {
+            return;
+        }
         int id = Menu.lerInt("Digite o id da espécie que deseja acessar: ");
         Especie esp = c.getGrafo().getEspeciePorId(id);
         System.out.println(esp);
@@ -191,11 +155,17 @@ public class SistemaPrincipal {
         }
     }
 
-    private static void adicionarPredacao(GrafoController c) throws EspecieNaoEncontradaException, ValorEnergeticoInvalidoException {
+    private static void adicionarPredacao(GrafoController c) throws EspecieNaoEncontradaException, ValorEnergeticoInvalidoException, PredacaoJaExistenteException {
         System.out.println(c.listarEspeciesSimples());
         int predador = Menu.lerInt("ID do predador: ");
         int presa = Menu.lerInt("ID da presa: ");
         int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
+
+        for (Aresta a : c.getGrafo().getEspeciePorId(predador).getPresas()){
+            if (a.getPresa() == c.getGrafo().getEspeciePorId(presa)){
+                throw new PredacaoJaExistenteException("Essa relação de predação já existe.");
+            }
+        }
 
         if (custo > 0)
             c.adicionarPredacao(predador, presa, custo);

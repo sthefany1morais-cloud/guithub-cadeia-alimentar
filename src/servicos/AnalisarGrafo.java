@@ -10,6 +10,10 @@ import java.util.*;
 
 public class AnalisarGrafo {
     GrafoEcologico grafo;
+
+    public AnalisarGrafo() {
+    }
+
     public AnalisarGrafo(GrafoEcologico grafo){
         this.grafo = grafo;
     }
@@ -285,7 +289,7 @@ public class AnalisarGrafo {
 
                     if (proxima.equals(destino)) {
                         return reconstruirCaminho(anterior, origem, destino)
-                                + "Energia: " + novoCusto;
+                                + "\nEnergia: " + novoCusto;
                     }
                 }
             }

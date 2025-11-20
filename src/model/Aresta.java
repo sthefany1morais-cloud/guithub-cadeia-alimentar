@@ -1,13 +1,22 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import model.especies.Especie;
 
 public class Aresta {
-
+    @JsonBackReference("predador-ref")
     private Especie predador;
+
+    @JsonBackReference("presa-ref")
     private Especie presa;
+
     private int custoEnergetico;
     private int ganhoEnergeticoLiquido;
+
+    public Aresta() {
+    }
 
     public Aresta(Especie predador, Especie presa, int custo){
         this.predador = predador;

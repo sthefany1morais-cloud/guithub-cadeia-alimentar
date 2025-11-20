@@ -31,7 +31,7 @@ public class GrafoController {
     }
 
     public void adicionarPredacao(int idPredador, int idPresa)
-            throws EspecieNaoEncontradaException, ValorEnergeticoInvalidoException {
+            throws EspecieNaoEncontradaException, PredacaoJaExistenteException {
         grafo.adicionarPredacao(idPredador, idPresa);
     }
 

@@ -1,4 +1,33 @@
 {
-  "grafos" : [ ],
-  "tamanho" : 0
+  "grafos" : [ {
+    "@id" : 1,
+    "especies" : [ {
+      "tipo" : "produtor",
+      "nome" : "e",
+      "tipo" : "Produtor",
+      "energia" : 23,
+      "presas" : [ ],
+      "predadores" : [ {
+        "custoEnergetico" : 10,
+        "ganhoEnergeticoLiquido" : 13
+      } ],
+      "fotossintese" : 11,
+      "ganhoTotal" : 11,
+      "perdaTotal" : 10
+    }, {
+      "tipo" : "consumidor",
+      "nome" : "r",
+      "tipo" : "Consumidor",
+      "energia" : 54,
+      "presas" : [ {
+        "custoEnergetico" : 10,
+        "ganhoEnergeticoLiquido" : 13
+      } ],
+      "predadores" : [ ],
+      "perdaTotal" : 0,
+      "ganhoTotal" : 13
+    } ],
+    "nome" : "w"
+  } ],
+  "tamanho" : 1
 }

@@ -6,6 +6,9 @@ public class Item {
     private Especie especie;
     private int custo;
 
+    public Item() {
+    }
+
     public Item(Especie especie, int custo) {
         this.especie = especie;
         this.custo = custo;
