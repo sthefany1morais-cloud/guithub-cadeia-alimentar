@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="ainrif.apiator.jakson.plugin.core.json.renderer" type="repository">
+    <properties maven-id="com.ainrif.apiator:jakson-plugin-core-json-renderer:0.15.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jakson-plugin-core-json-renderer-0.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/groovy-3.0.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/core-json-renderer-0.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spi-plugin-core-json-renderer-0.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/core-0.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/api-0.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsr305-3.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-core-5.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-jcl-5.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.11.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.11.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/groovy-json-3.0.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/classgraph-4.8.90.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.11.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

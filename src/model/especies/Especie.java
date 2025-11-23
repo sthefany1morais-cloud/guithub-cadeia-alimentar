@@ -16,12 +16,12 @@ import java.util.List;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
-        property = "tipo"
+        property = "classe"
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Produtor.class, name = "produtor"),
-        @JsonSubTypes.Type(value = Consumidor.class, name = "consumidor"),
-        @JsonSubTypes.Type(value = Decompositor.class, name = "decompositor")
+        @JsonSubTypes.Type(value = Produtor.class, name = "Produtor"),
+        @JsonSubTypes.Type(value = Consumidor.class, name = "Consumidor"),
+        @JsonSubTypes.Type(value = Decompositor.class, name = "Decompositor")
 })
 
 public abstract class Especie {

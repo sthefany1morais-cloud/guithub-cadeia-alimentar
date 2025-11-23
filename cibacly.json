@@ -2,32 +2,65 @@
   "grafos" : [ {
     "@id" : 1,
     "especies" : [ {
-      "tipo" : "produtor",
-      "nome" : "e",
+      "classe" : "Produtor",
+      "nome" : "Aroeira",
       "tipo" : "Produtor",
-      "energia" : 23,
+      "energia" : 250,
       "presas" : [ ],
       "predadores" : [ {
-        "custoEnergetico" : 10,
-        "ganhoEnergeticoLiquido" : 13
+        "custoEnergetico" : 225,
+        "ganhoEnergeticoLiquido" : 25,
+        "nomePredador" : "Aranha",
+        "nomePresa" : "Aroeira"
+      }, {
+        "custoEnergetico" : 208,
+        "ganhoEnergeticoLiquido" : 42,
+        "nomePredador" : "Esquilo",
+        "nomePresa" : "Aroeira"
       } ],
-      "fotossintese" : 11,
-      "ganhoTotal" : 11,
-      "perdaTotal" : 10
+      "fotossintese" : 125,
+      "ganhoTotal" : 125,
+      "perdaTotal" : 433
     }, {
-      "tipo" : "consumidor",
-      "nome" : "r",
+      "classe" : "Consumidor",
+      "nome" : "Aranha",
       "tipo" : "Consumidor",
-      "energia" : 54,
+      "energia" : 250,
       "presas" : [ {
-        "custoEnergetico" : 10,
-        "ganhoEnergeticoLiquido" : 13
+        "custoEnergetico" : 225,
+        "ganhoEnergeticoLiquido" : 25,
+        "nomePredador" : "Aranha",
+        "nomePresa" : "Aranha"
+      }, {
+        "custoEnergetico" : 225,
+        "ganhoEnergeticoLiquido" : 25,
+        "nomePredador" : "Aranha",
+        "nomePresa" : "Aroeira"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 225,
+        "ganhoEnergeticoLiquido" : 25,
+        "nomePredador" : "Aranha",
+        "nomePresa" : "Aranha"
+      } ],
+      "perdaTotal" : 225,
+      "ganhoTotal" : 50
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Esquilo",
+      "tipo" : "Consumidor",
+      "energia" : 300,
+      "presas" : [ {
+        "custoEnergetico" : 208,
+        "ganhoEnergeticoLiquido" : 42,
+        "nomePredador" : "Esquilo",
+        "nomePresa" : "Aroeira"
       } ],
       "predadores" : [ ],
       "perdaTotal" : 0,
-      "ganhoTotal" : 13
+      "ganhoTotal" : 42
     } ],
-    "nome" : "w"
+    "nome" : "Amazônia"
   } ],
   "tamanho" : 1
 }

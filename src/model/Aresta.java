@@ -1,8 +1,6 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import model.especies.Especie;
 
 public class Aresta {
@@ -15,6 +13,9 @@ public class Aresta {
     private int custoEnergetico;
     private int ganhoEnergeticoLiquido;
 
+    private String nomePredador;
+    private String nomePresa;
+
     public Aresta() {
     }
 
@@ -23,12 +24,16 @@ public class Aresta {
         this.presa = presa;
         this.custoEnergetico = custo;
         this.ganhoEnergeticoLiquido = presa.getEnergia() - custo;
+        this.nomePredador = predador.getNome();
+        this.nomePresa = presa.getNome();
     }
     public Aresta(Especie predador, Especie presa){
         this.predador = predador;
         this.presa = presa;
         this.custoEnergetico = calcularCusto(presa, predador);
         this.ganhoEnergeticoLiquido = presa.getEnergia() - this.custoEnergetico;
+        this.nomePredador = predador.getNome();
+        this.nomePresa = presa.getNome();
     }
 
     @Override
@@ -63,4 +68,37 @@ public class Aresta {
     public int getGanhoEnergeticoLiquido() {
         return ganhoEnergeticoLiquido;
     }
+
+    public void setPredador(Especie predador) {
+        this.predador = predador;
+    }
+
+    public void setPresa(Especie presa) {
+        this.presa = presa;
+    }
+
+    public void setCustoEnergetico(int custoEnergetico) {
+        this.custoEnergetico = custoEnergetico;
+    }
+
+    public void setGanhoEnergeticoLiquido(int ganhoEnergeticoLiquido) {
+        this.ganhoEnergeticoLiquido = ganhoEnergeticoLiquido;
+    }
+
+    public String getNomePredador() {
+        return nomePredador;
+    }
+
+    public void setNomePredador(String nomePredador) {
+        this.nomePredador = nomePredador;
+    }
+
+    public String getNomePresa() {
+        return nomePresa;
+    }
+
+    public void setNomePresa(String nomePresa) {
+        this.nomePresa = nomePresa;
+    }
+
 }

@@ -51,4 +51,11 @@ public class GrafoGerenciador {
         return grafos.size();
     }
 
+    public List<GrafoEcologico> getGrafos() {
+        return grafos;
+    }
+
+    public void setGrafos(List<GrafoEcologico> grafos) {
+        this.grafos = grafos;
+    }
 }
