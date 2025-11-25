@@ -3,62 +3,895 @@
     "@id" : 1,
     "especies" : [ {
       "classe" : "Produtor",
-      "nome" : "Aroeira",
+      "nome" : "Samaúna",
       "tipo" : "Produtor",
-      "energia" : 250,
+      "energia" : 2000,
       "presas" : [ ],
       "predadores" : [ {
-        "custoEnergetico" : 225,
-        "ganhoEnergeticoLiquido" : 25,
-        "nomePredador" : "Aranha",
-        "nomePresa" : "Aroeira"
-      }, {
-        "custoEnergetico" : 208,
-        "ganhoEnergeticoLiquido" : 42,
-        "nomePredador" : "Esquilo",
-        "nomePresa" : "Aroeira"
+        "custoEnergetico" : 60,
+        "ganhoEnergeticoLiquido" : 1940,
+        "nomePredador" : "Gafanhoto",
+        "nomePresa" : "Samaúna"
       } ],
-      "fotossintese" : 125,
-      "ganhoTotal" : 125,
-      "perdaTotal" : 433
+      "fotossintese" : 1000,
+      "ganhoTotal" : 1000,
+      "perdaTotal" : 60
+    }, {
+      "classe" : "Produtor",
+      "nome" : "Folha da Samaúna",
+      "tipo" : "Produtor",
+      "energia" : 1000,
+      "presas" : [ ],
+      "predadores" : [ {
+        "custoEnergetico" : 36,
+        "ganhoEnergeticoLiquido" : 964,
+        "nomePredador" : "Capivara",
+        "nomePresa" : "Folha da Samaúna"
+      } ],
+      "fotossintese" : 500,
+      "ganhoTotal" : 500,
+      "perdaTotal" : 36
+    }, {
+      "classe" : "Produtor",
+      "nome" : "Capim-braquiarão",
+      "tipo" : "Produtor",
+      "energia" : 1800,
+      "presas" : [ ],
+      "predadores" : [ {
+        "custoEnergetico" : 45,
+        "ganhoEnergeticoLiquido" : 1755,
+        "nomePredador" : "Veado-Catingueiro",
+        "nomePresa" : "Capim-braquiarão"
+      } ],
+      "fotossintese" : 900,
+      "ganhoTotal" : 900,
+      "perdaTotal" : 45
+    }, {
+      "classe" : "Produtor",
+      "nome" : "Cupuaçu",
+      "tipo" : "Produtor",
+      "energia" : 1300,
+      "presas" : [ ],
+      "predadores" : [ {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 1270,
+        "nomePredador" : "Formiga",
+        "nomePresa" : "Cupuaçu"
+      }, {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 1270,
+        "nomePredador" : "Bicho-Preguiça",
+        "nomePresa" : "Cupuaçu"
+      }, {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 1270,
+        "nomePredador" : "Besouro (O. discicolle)",
+        "nomePresa" : "Cupuaçu"
+      }, {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 1270,
+        "nomePredador" : "Larva (H. tenuis)",
+        "nomePresa" : "Cupuaçu"
+      } ],
+      "fotossintese" : 650,
+      "ganhoTotal" : 650,
+      "perdaTotal" : 120
+    }, {
+      "classe" : "Produtor",
+      "nome" : "Guaraná",
+      "tipo" : "Produtor",
+      "energia" : 1500,
+      "presas" : [ ],
+      "predadores" : [ {
+        "custoEnergetico" : 39,
+        "ganhoEnergeticoLiquido" : 1461,
+        "nomePredador" : "Paca",
+        "nomePresa" : "Guaraná"
+      }, {
+        "custoEnergetico" : 39,
+        "ganhoEnergeticoLiquido" : 1461,
+        "nomePredador" : "Anta",
+        "nomePresa" : "Guaraná"
+      }, {
+        "custoEnergetico" : 39,
+        "ganhoEnergeticoLiquido" : 1461,
+        "nomePredador" : "Tucano",
+        "nomePresa" : "Guaraná"
+      } ],
+      "fotossintese" : 750,
+      "ganhoTotal" : 750,
+      "perdaTotal" : 117
+    }, {
+      "classe" : "Produtor",
+      "nome" : "Algas Verdes (Chlorophyta) ",
+      "tipo" : "Produtor",
+      "energia" : 900,
+      "presas" : [ ],
+      "predadores" : [ {
+        "custoEnergetico" : 24,
+        "ganhoEnergeticoLiquido" : 876,
+        "nomePredador" : "Tambaqui",
+        "nomePresa" : "Algas Verdes (Chlorophyta) "
+      } ],
+      "fotossintese" : 450,
+      "ganhoTotal" : 450,
+      "perdaTotal" : 24
+    }, {
+      "classe" : "Produtor",
+      "nome" : "Fitoplâncton",
+      "tipo" : "Produtor",
+      "energia" : 1000,
+      "presas" : [ ],
+      "predadores" : [ ],
+      "fotossintese" : 500,
+      "ganhoTotal" : 500,
+      "perdaTotal" : 0
+    }, {
+      "classe" : "Produtor",
+      "nome" : "Macrófitas Aquáticas",
+      "tipo" : "Produtor",
+      "energia" : 800,
+      "presas" : [ ],
+      "predadores" : [ {
+        "custoEnergetico" : 27,
+        "ganhoEnergeticoLiquido" : 773,
+        "nomePredador" : "Capivara",
+        "nomePresa" : "Macrófitas Aquáticas"
+      }, {
+        "custoEnergetico" : 27,
+        "ganhoEnergeticoLiquido" : 773,
+        "nomePredador" : "Tartaruga",
+        "nomePresa" : "Macrófitas Aquáticas"
+      }, {
+        "custoEnergetico" : 720,
+        "ganhoEnergeticoLiquido" : 80,
+        "nomePredador" : "Tambaqui",
+        "nomePresa" : "Macrófitas Aquáticas"
+      } ],
+      "fotossintese" : 400,
+      "ganhoTotal" : 400,
+      "perdaTotal" : 774
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Capivara",
+      "tipo" : "Consumidor",
+      "energia" : 200,
+      "presas" : [ {
+        "custoEnergetico" : 36,
+        "ganhoEnergeticoLiquido" : 964,
+        "nomePredador" : "Capivara",
+        "nomePresa" : "Folha da Samaúna"
+      }, {
+        "custoEnergetico" : 27,
+        "ganhoEnergeticoLiquido" : 773,
+        "nomePredador" : "Capivara",
+        "nomePresa" : "Macrófitas Aquáticas"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 6,
+        "ganhoEnergeticoLiquido" : 194,
+        "nomePredador" : "Jacaré-Açu (juvenil)",
+        "nomePresa" : "Capivara"
+      }, {
+        "custoEnergetico" : 6,
+        "ganhoEnergeticoLiquido" : 194,
+        "nomePredador" : "Jacaré-Açu (adulto)",
+        "nomePresa" : "Capivara"
+      }, {
+        "custoEnergetico" : 6,
+        "ganhoEnergeticoLiquido" : 194,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Capivara"
+      } ],
+      "ganhoTotal" : 1737,
+      "perdaTotal" : 18
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Tartaruga",
+      "tipo" : "Consumidor",
+      "energia" : 150,
+      "presas" : [ {
+        "custoEnergetico" : 27,
+        "ganhoEnergeticoLiquido" : 773,
+        "nomePredador" : "Tartaruga",
+        "nomePresa" : "Macrófitas Aquáticas"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 145,
+        "nomePredador" : "Jacaré-Açu (juvenil)",
+        "nomePresa" : "Tartaruga"
+      } ],
+      "ganhoTotal" : 773,
+      "perdaTotal" : 5
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Paca",
+      "tipo" : "Consumidor",
+      "energia" : 180,
+      "presas" : [ {
+        "custoEnergetico" : 39,
+        "ganhoEnergeticoLiquido" : 1461,
+        "nomePredador" : "Paca",
+        "nomePresa" : "Guaraná"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 175,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Paca"
+      }, {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 175,
+        "nomePredador" : "Suçuarana",
+        "nomePresa" : "Paca"
+      } ],
+      "ganhoTotal" : 1461,
+      "perdaTotal" : 10
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Veado-Catingueiro",
+      "tipo" : "Consumidor",
+      "energia" : 220,
+      "presas" : [ {
+        "custoEnergetico" : 45,
+        "ganhoEnergeticoLiquido" : 1755,
+        "nomePredador" : "Veado-Catingueiro",
+        "nomePresa" : "Capim-braquiarão"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 7,
+        "ganhoEnergeticoLiquido" : 213,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Veado-Catingueiro"
+      } ],
+      "ganhoTotal" : 1755,
+      "perdaTotal" : 7
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Gafanhoto",
+      "tipo" : "Consumidor",
+      "energia" : 70,
+      "presas" : [ {
+        "custoEnergetico" : 60,
+        "ganhoEnergeticoLiquido" : 1940,
+        "nomePredador" : "Gafanhoto",
+        "nomePresa" : "Samaúna"
+      }, {
+        "custoEnergetico" : 63,
+        "ganhoEnergeticoLiquido" : 7,
+        "nomePredador" : "Gafanhoto",
+        "nomePresa" : "Barata"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 2,
+        "ganhoEnergeticoLiquido" : 68,
+        "nomePredador" : "Sapo",
+        "nomePresa" : "Gafanhoto"
+      }, {
+        "custoEnergetico" : 2,
+        "ganhoEnergeticoLiquido" : 68,
+        "nomePredador" : "Aranha",
+        "nomePresa" : "Gafanhoto"
+      }, {
+        "custoEnergetico" : 2,
+        "ganhoEnergeticoLiquido" : 68,
+        "nomePredador" : "Tucano",
+        "nomePresa" : "Gafanhoto"
+      }, {
+        "custoEnergetico" : 16,
+        "ganhoEnergeticoLiquido" : 54,
+        "nomePredador" : "Garça",
+        "nomePresa" : "Gafanhoto"
+      }, {
+        "custoEnergetico" : 7,
+        "ganhoEnergeticoLiquido" : 63,
+        "nomePredador" : "Barata",
+        "nomePresa" : "Gafanhoto"
+      } ],
+      "ganhoTotal" : 1947,
+      "perdaTotal" : 29
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Formiga",
+      "tipo" : "Consumidor",
+      "energia" : 50,
+      "presas" : [ {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 1270,
+        "nomePredador" : "Formiga",
+        "nomePresa" : "Cupuaçu"
+      }, {
+        "custoEnergetico" : 72,
+        "ganhoEnergeticoLiquido" : 8,
+        "nomePredador" : "Formiga",
+        "nomePresa" : "Aranha"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 45,
+        "nomePredador" : "Besouro (O. discicolle)",
+        "nomePresa" : "Formiga"
+      } ],
+      "ganhoTotal" : 1278,
+      "perdaTotal" : 5
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Tambaqui",
+      "tipo" : "Consumidor",
+      "energia" : 160,
+      "presas" : [ {
+        "custoEnergetico" : 24,
+        "ganhoEnergeticoLiquido" : 876,
+        "nomePredador" : "Tambaqui",
+        "nomePresa" : "Algas Verdes (Chlorophyta) "
+      }, {
+        "custoEnergetico" : 720,
+        "ganhoEnergeticoLiquido" : 80,
+        "nomePredador" : "Tambaqui",
+        "nomePresa" : "Macrófitas Aquáticas"
+      }, {
+        "custoEnergetico" : 270,
+        "ganhoEnergeticoLiquido" : 30,
+        "nomePredador" : "Tambaqui",
+        "nomePresa" : "Cobra-d’água"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 155,
+        "nomePredador" : "Cobra-d’água",
+        "nomePresa" : "Tambaqui"
+      } ],
+      "ganhoTotal" : 986,
+      "perdaTotal" : 5
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Bicho-Preguiça",
+      "tipo" : "Consumidor",
+      "energia" : 90,
+      "presas" : [ {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 1270,
+        "nomePredador" : "Bicho-Preguiça",
+        "nomePresa" : "Cupuaçu"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 3,
+        "ganhoEnergeticoLiquido" : 87,
+        "nomePredador" : "Harpia",
+        "nomePresa" : "Bicho-Preguiça"
+      }, {
+        "custoEnergetico" : 9,
+        "ganhoEnergeticoLiquido" : 81,
+        "nomePredador" : "Barata",
+        "nomePresa" : "Bicho-Preguiça"
+      } ],
+      "ganhoTotal" : 1270,
+      "perdaTotal" : 12
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Anta",
+      "tipo" : "Consumidor",
+      "energia" : 300,
+      "presas" : [ {
+        "custoEnergetico" : 39,
+        "ganhoEnergeticoLiquido" : 1461,
+        "nomePredador" : "Anta",
+        "nomePresa" : "Guaraná"
+      } ],
+      "predadores" : [ ],
+      "ganhoTotal" : 1461,
+      "perdaTotal" : 0
     }, {
       "classe" : "Consumidor",
       "nome" : "Aranha",
       "tipo" : "Consumidor",
-      "energia" : 250,
+      "energia" : 80,
       "presas" : [ {
-        "custoEnergetico" : 225,
-        "ganhoEnergeticoLiquido" : 25,
+        "custoEnergetico" : 2,
+        "ganhoEnergeticoLiquido" : 68,
         "nomePredador" : "Aranha",
-        "nomePresa" : "Aranha"
-      }, {
-        "custoEnergetico" : 225,
-        "ganhoEnergeticoLiquido" : 25,
-        "nomePredador" : "Aranha",
-        "nomePresa" : "Aroeira"
+        "nomePresa" : "Gafanhoto"
       } ],
       "predadores" : [ {
-        "custoEnergetico" : 225,
-        "ganhoEnergeticoLiquido" : 25,
-        "nomePredador" : "Aranha",
+        "custoEnergetico" : 72,
+        "ganhoEnergeticoLiquido" : 8,
+        "nomePredador" : "Formiga",
         "nomePresa" : "Aranha"
       } ],
-      "perdaTotal" : 225,
-      "ganhoTotal" : 50
+      "ganhoTotal" : 68,
+      "perdaTotal" : 72
     }, {
       "classe" : "Consumidor",
-      "nome" : "Esquilo",
+      "nome" : "Sapo",
+      "tipo" : "Consumidor",
+      "energia" : 120,
+      "presas" : [ {
+        "custoEnergetico" : 2,
+        "ganhoEnergeticoLiquido" : 68,
+        "nomePredador" : "Sapo",
+        "nomePresa" : "Gafanhoto"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 80,
+        "ganhoEnergeticoLiquido" : 40,
+        "nomePredador" : "Traíra",
+        "nomePresa" : "Sapo"
+      } ],
+      "ganhoTotal" : 68,
+      "perdaTotal" : 80
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Garça",
       "tipo" : "Consumidor",
       "energia" : 300,
       "presas" : [ {
-        "custoEnergetico" : 208,
-        "ganhoEnergeticoLiquido" : 42,
-        "nomePredador" : "Esquilo",
-        "nomePresa" : "Aroeira"
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 175,
+        "nomePredador" : "Garça",
+        "nomePresa" : "Traíra"
+      }, {
+        "custoEnergetico" : 16,
+        "ganhoEnergeticoLiquido" : 54,
+        "nomePredador" : "Garça",
+        "nomePresa" : "Gafanhoto"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 9,
+        "ganhoEnergeticoLiquido" : 291,
+        "nomePredador" : "Jacaré-Açu (juvenil)",
+        "nomePresa" : "Garça"
+      } ],
+      "ganhoTotal" : 229,
+      "perdaTotal" : 9
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Tucano",
+      "tipo" : "Consumidor",
+      "energia" : 250,
+      "presas" : [ {
+        "custoEnergetico" : 39,
+        "ganhoEnergeticoLiquido" : 1461,
+        "nomePredador" : "Tucano",
+        "nomePresa" : "Guaraná"
+      }, {
+        "custoEnergetico" : 2,
+        "ganhoEnergeticoLiquido" : 68,
+        "nomePredador" : "Tucano",
+        "nomePresa" : "Gafanhoto"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 8,
+        "ganhoEnergeticoLiquido" : 242,
+        "nomePredador" : "Harpia",
+        "nomePresa" : "Tucano"
+      }, {
+        "custoEnergetico" : 12,
+        "ganhoEnergeticoLiquido" : 238,
+        "nomePredador" : "Bacillus subtilis amazônico",
+        "nomePresa" : "Tucano"
+      } ],
+      "ganhoTotal" : 1529,
+      "perdaTotal" : 20
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Cobra-d’água",
+      "tipo" : "Consumidor",
+      "energia" : 300,
+      "presas" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 155,
+        "nomePredador" : "Cobra-d’água",
+        "nomePresa" : "Tambaqui"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 270,
+        "ganhoEnergeticoLiquido" : 30,
+        "nomePredador" : "Tambaqui",
+        "nomePresa" : "Cobra-d’água"
+      }, {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 270,
+        "nomePredador" : "Piolho-de-cobra",
+        "nomePresa" : "Cobra-d’água"
+      } ],
+      "ganhoTotal" : 155,
+      "perdaTotal" : 300
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Piranha",
+      "tipo" : "Consumidor",
+      "energia" : 170,
+      "presas" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 175,
+        "nomePredador" : "Piranha",
+        "nomePresa" : "Traíra"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 165,
+        "nomePredador" : "Boto-cor-de-rosa",
+        "nomePresa" : "Piranha"
+      }, {
+        "custoEnergetico" : 161,
+        "ganhoEnergeticoLiquido" : 9,
+        "nomePredador" : "Traíra",
+        "nomePresa" : "Piranha"
+      } ],
+      "ganhoTotal" : 175,
+      "perdaTotal" : 166
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Traíra",
+      "tipo" : "Consumidor",
+      "energia" : 180,
+      "presas" : [ {
+        "custoEnergetico" : 161,
+        "ganhoEnergeticoLiquido" : 9,
+        "nomePredador" : "Traíra",
+        "nomePresa" : "Piranha"
+      }, {
+        "custoEnergetico" : 540,
+        "ganhoEnergeticoLiquido" : 60,
+        "nomePredador" : "Traíra",
+        "nomePresa" : "Boto-cor-de-rosa"
+      }, {
+        "custoEnergetico" : 80,
+        "ganhoEnergeticoLiquido" : 40,
+        "nomePredador" : "Traíra",
+        "nomePresa" : "Sapo"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 175,
+        "nomePredador" : "Garça",
+        "nomePresa" : "Traíra"
+      }, {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 175,
+        "nomePredador" : "Piranha",
+        "nomePresa" : "Traíra"
+      } ],
+      "ganhoTotal" : 109,
+      "perdaTotal" : 10
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Jacaré-Açu (juvenil)",
+      "tipo" : "Consumidor",
+      "energia" : 500,
+      "presas" : [ {
+        "custoEnergetico" : 6,
+        "ganhoEnergeticoLiquido" : 194,
+        "nomePredador" : "Jacaré-Açu (juvenil)",
+        "nomePresa" : "Capivara"
+      }, {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 145,
+        "nomePredador" : "Jacaré-Açu (juvenil)",
+        "nomePresa" : "Tartaruga"
+      }, {
+        "custoEnergetico" : 9,
+        "ganhoEnergeticoLiquido" : 291,
+        "nomePredador" : "Jacaré-Açu (juvenil)",
+        "nomePresa" : "Garça"
       } ],
       "predadores" : [ ],
-      "perdaTotal" : 0,
-      "ganhoTotal" : 42
+      "ganhoTotal" : 630,
+      "perdaTotal" : 0
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Suçuarana",
+      "tipo" : "Consumidor",
+      "energia" : 550,
+      "presas" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 175,
+        "nomePredador" : "Suçuarana",
+        "nomePresa" : "Paca"
+      } ],
+      "predadores" : [ ],
+      "ganhoTotal" : 175,
+      "perdaTotal" : 0
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Boto-cor-de-rosa",
+      "tipo" : "Consumidor",
+      "energia" : 600,
+      "presas" : [ {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 165,
+        "nomePredador" : "Boto-cor-de-rosa",
+        "nomePresa" : "Piranha"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 540,
+        "ganhoEnergeticoLiquido" : 60,
+        "nomePredador" : "Traíra",
+        "nomePresa" : "Boto-cor-de-rosa"
+      } ],
+      "ganhoTotal" : 165,
+      "perdaTotal" : 540
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Onça-Pintada",
+      "tipo" : "Consumidor",
+      "energia" : 900,
+      "presas" : [ {
+        "custoEnergetico" : 6,
+        "ganhoEnergeticoLiquido" : 194,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Capivara"
+      }, {
+        "custoEnergetico" : 7,
+        "ganhoEnergeticoLiquido" : 213,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Veado-Catingueiro"
+      }, {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 175,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Paca"
+      }, {
+        "custoEnergetico" : 711,
+        "ganhoEnergeticoLiquido" : 89,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Harpia"
+      }, {
+        "custoEnergetico" : 16,
+        "ganhoEnergeticoLiquido" : 104,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Urubu-rei"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 27,
+        "ganhoEnergeticoLiquido" : 873,
+        "nomePredador" : "Urubu-rei",
+        "nomePresa" : "Onça-Pintada"
+      }, {
+        "custoEnergetico" : 810,
+        "ganhoEnergeticoLiquido" : 90,
+        "nomePredador" : "Harpia",
+        "nomePresa" : "Onça-Pintada"
+      }, {
+        "custoEnergetico" : 90,
+        "ganhoEnergeticoLiquido" : 810,
+        "nomePredador" : "Piolho-de-cobra",
+        "nomePresa" : "Onça-Pintada"
+      }, {
+        "custoEnergetico" : 90,
+        "ganhoEnergeticoLiquido" : 810,
+        "nomePredador" : "Barata",
+        "nomePresa" : "Onça-Pintada"
+      } ],
+      "ganhoTotal" : 775,
+      "perdaTotal" : 1017
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Harpia",
+      "tipo" : "Consumidor",
+      "energia" : 800,
+      "presas" : [ {
+        "custoEnergetico" : 3,
+        "ganhoEnergeticoLiquido" : 87,
+        "nomePredador" : "Harpia",
+        "nomePresa" : "Bicho-Preguiça"
+      }, {
+        "custoEnergetico" : 8,
+        "ganhoEnergeticoLiquido" : 242,
+        "nomePredador" : "Harpia",
+        "nomePresa" : "Tucano"
+      }, {
+        "custoEnergetico" : 810,
+        "ganhoEnergeticoLiquido" : 90,
+        "nomePredador" : "Harpia",
+        "nomePresa" : "Onça-Pintada"
+      }, {
+        "custoEnergetico" : 18,
+        "ganhoEnergeticoLiquido" : 102,
+        "nomePredador" : "Harpia",
+        "nomePresa" : "Urubu-rei"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 80,
+        "ganhoEnergeticoLiquido" : 720,
+        "nomePredador" : "Urubu-rei",
+        "nomePresa" : "Harpia"
+      }, {
+        "custoEnergetico" : 711,
+        "ganhoEnergeticoLiquido" : 89,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Harpia"
+      } ],
+      "ganhoTotal" : 521,
+      "perdaTotal" : 791
+    }, {
+      "classe" : "Consumidor",
+      "nome" : "Jacaré-Açu (adulto)",
+      "tipo" : "Consumidor",
+      "energia" : 1000,
+      "presas" : [ {
+        "custoEnergetico" : 6,
+        "ganhoEnergeticoLiquido" : 194,
+        "nomePredador" : "Jacaré-Açu (adulto)",
+        "nomePresa" : "Capivara"
+      } ],
+      "predadores" : [ ],
+      "ganhoTotal" : 194,
+      "perdaTotal" : 0
+    }, {
+      "classe" : "Decompositor",
+      "nome" : "Fungo-Orelha",
+      "tipo" : "Decompositor",
+      "energia" : 520,
+      "presas" : [ {
+        "custoEnergetico" : 4,
+        "ganhoEnergeticoLiquido" : 116,
+        "nomePredador" : "Fungo-Orelha",
+        "nomePresa" : "Urubu-rei"
+      } ],
+      "predadores" : [ ],
+      "ganhoTotal" : 116,
+      "perdaTotal" : 0
+    }, {
+      "classe" : "Decompositor",
+      "nome" : "Urubu-rei",
+      "tipo" : "Decompositor",
+      "energia" : 120,
+      "presas" : [ {
+        "custoEnergetico" : 27,
+        "ganhoEnergeticoLiquido" : 873,
+        "nomePredador" : "Urubu-rei",
+        "nomePresa" : "Onça-Pintada"
+      }, {
+        "custoEnergetico" : 80,
+        "ganhoEnergeticoLiquido" : 720,
+        "nomePredador" : "Urubu-rei",
+        "nomePresa" : "Harpia"
+      }, {
+        "custoEnergetico" : 7,
+        "ganhoEnergeticoLiquido" : 63,
+        "nomePredador" : "Urubu-rei",
+        "nomePresa" : "Barata"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 4,
+        "ganhoEnergeticoLiquido" : 116,
+        "nomePredador" : "Fungo-Orelha",
+        "nomePresa" : "Urubu-rei"
+      }, {
+        "custoEnergetico" : 18,
+        "ganhoEnergeticoLiquido" : 102,
+        "nomePredador" : "Harpia",
+        "nomePresa" : "Urubu-rei"
+      }, {
+        "custoEnergetico" : 16,
+        "ganhoEnergeticoLiquido" : 104,
+        "nomePredador" : "Onça-Pintada",
+        "nomePresa" : "Urubu-rei"
+      } ],
+      "ganhoTotal" : 1656,
+      "perdaTotal" : 38
+    }, {
+      "classe" : "Decompositor",
+      "nome" : "Bacillus subtilis amazônico",
+      "tipo" : "Decompositor",
+      "energia" : 300,
+      "presas" : [ {
+        "custoEnergetico" : 12,
+        "ganhoEnergeticoLiquido" : 238,
+        "nomePredador" : "Bacillus subtilis amazônico",
+        "nomePresa" : "Tucano"
+      } ],
+      "predadores" : [ ],
+      "ganhoTotal" : 238,
+      "perdaTotal" : 0
+    }, {
+      "classe" : "Decompositor",
+      "nome" : "Besouro (O. discicolle)",
+      "tipo" : "Decompositor",
+      "energia" : 200,
+      "presas" : [ {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 1270,
+        "nomePredador" : "Besouro (O. discicolle)",
+        "nomePresa" : "Cupuaçu"
+      }, {
+        "custoEnergetico" : 7,
+        "ganhoEnergeticoLiquido" : 63,
+        "nomePredador" : "Besouro (O. discicolle)",
+        "nomePresa" : "Barata"
+      }, {
+        "custoEnergetico" : 5,
+        "ganhoEnergeticoLiquido" : 45,
+        "nomePredador" : "Besouro (O. discicolle)",
+        "nomePresa" : "Formiga"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 20,
+        "ganhoEnergeticoLiquido" : 180,
+        "nomePredador" : "Barata",
+        "nomePresa" : "Besouro (O. discicolle)"
+      } ],
+      "ganhoTotal" : 1378,
+      "perdaTotal" : 20
+    }, {
+      "classe" : "Decompositor",
+      "nome" : "Larva (H. tenuis)",
+      "tipo" : "Decompositor",
+      "energia" : 210,
+      "presas" : [ {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 1270,
+        "nomePredador" : "Larva (H. tenuis)",
+        "nomePresa" : "Cupuaçu"
+      } ],
+      "predadores" : [ ],
+      "ganhoTotal" : 1270,
+      "perdaTotal" : 0
+    }, {
+      "classe" : "Decompositor",
+      "nome" : "Piolho-de-cobra",
+      "tipo" : "Decompositor",
+      "energia" : 120,
+      "presas" : [ {
+        "custoEnergetico" : 30,
+        "ganhoEnergeticoLiquido" : 270,
+        "nomePredador" : "Piolho-de-cobra",
+        "nomePresa" : "Cobra-d’água"
+      }, {
+        "custoEnergetico" : 90,
+        "ganhoEnergeticoLiquido" : 810,
+        "nomePredador" : "Piolho-de-cobra",
+        "nomePresa" : "Onça-Pintada"
+      } ],
+      "predadores" : [ ],
+      "ganhoTotal" : 1080,
+      "perdaTotal" : 0
+    }, {
+      "classe" : "Decompositor",
+      "nome" : "Barata",
+      "tipo" : "Decompositor",
+      "energia" : 70,
+      "presas" : [ {
+        "custoEnergetico" : 9,
+        "ganhoEnergeticoLiquido" : 81,
+        "nomePredador" : "Barata",
+        "nomePresa" : "Bicho-Preguiça"
+      }, {
+        "custoEnergetico" : 20,
+        "ganhoEnergeticoLiquido" : 180,
+        "nomePredador" : "Barata",
+        "nomePresa" : "Besouro (O. discicolle)"
+      }, {
+        "custoEnergetico" : 7,
+        "ganhoEnergeticoLiquido" : 63,
+        "nomePredador" : "Barata",
+        "nomePresa" : "Gafanhoto"
+      }, {
+        "custoEnergetico" : 90,
+        "ganhoEnergeticoLiquido" : 810,
+        "nomePredador" : "Barata",
+        "nomePresa" : "Onça-Pintada"
+      } ],
+      "predadores" : [ {
+        "custoEnergetico" : 7,
+        "ganhoEnergeticoLiquido" : 63,
+        "nomePredador" : "Besouro (O. discicolle)",
+        "nomePresa" : "Barata"
+      }, {
+        "custoEnergetico" : 63,
+        "ganhoEnergeticoLiquido" : 7,
+        "nomePredador" : "Gafanhoto",
+        "nomePresa" : "Barata"
+      }, {
+        "custoEnergetico" : 7,
+        "ganhoEnergeticoLiquido" : 63,
+        "nomePredador" : "Urubu-rei",
+        "nomePresa" : "Barata"
+      } ],
+      "ganhoTotal" : 1134,
+      "perdaTotal" : 77
     } ],
     "nome" : "Amazônia"
   } ],
