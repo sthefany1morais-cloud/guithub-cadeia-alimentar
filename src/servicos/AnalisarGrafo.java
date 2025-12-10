@@ -311,7 +311,7 @@ public class AnalisarGrafo {
 
         Collections.reverse(caminho);
 
-        StringBuilder sb = new StringBuilder("Menor caminho: ");
+        StringBuilder sb = new StringBuilder("Melhor caminho: ");
         for(int i=0; i<caminho.size(); i++){
             sb.append(caminho.get(i).getNome());
             if(i < caminho.size() - 1) sb.append(" -> ");
