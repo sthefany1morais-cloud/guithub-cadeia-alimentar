@@ -48,6 +48,7 @@ public class GrafoController {
         StringBuilder texto = new StringBuilder();
         Especie especie = grafo.getEspeciePorId(idEspecie);
         for (String predador: grafo.listarPredadores(especie)){
+            texto.append("\n");
             texto.append(predador);
         }
         return texto.toString();
@@ -57,6 +58,7 @@ public class GrafoController {
         StringBuilder texto = new StringBuilder();
         Especie especie = grafo.getEspeciePorId(idEspecie);
         for (String presa: grafo.listarPresas(especie)){
+            texto.append("\n");
             texto.append(presa);
         }
         return texto.toString();
@@ -88,10 +90,6 @@ public class GrafoController {
 
     public String menorCiclo(boolean decompositores) {
         return analisador.menorCiclo(decompositores);
-    }
-
-    public String avaliarBemEstar(int id) throws EspecieNaoEncontradaException {
-        return analisador.avaliarBemEstar(id);
     }
 }
 

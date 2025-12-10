@@ -328,39 +328,4 @@ public class AnalisarGrafo {
         sb.append("\nTotal de espécies no caminho: ").append(caminho.size());
         return sb.toString();
     }
-
-    public String avaliarBemEstar(int idEspecie) throws EspecieNaoEncontradaException {
-        Especie especie = this.grafo.getEspeciePorId(idEspecie);
-
-        float penalidade = 1;
-
-        if (especie.getTipo().equalsIgnoreCase("Decompositor")){
-            penalidade = 2;
-        }
-
-        double ganhoRelativo = especie.getGanhoTotal()/penalidade;
-        double perdaRelativa = especie.getPerdaTotal();
-
-        double ibe = (ganhoRelativo/penalidade) - (perdaRelativa);
-
-        String status;
-        if (ibe > 0.25) {
-            status = "Dominante no ecossistema";
-        } else if (ibe < -0.25) {
-            status = "Em risco no ecossistema";
-        } else {
-            status = "Em equilíbrio ecológico";
-        }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("Espécie: ").append(especie.getNome()).append("\n")
-                .append("Tipo: ").append(especie.getClass().getSimpleName()).append("\n")
-                .append("Energia base: ").append(especie.getEnergia()).append("\n")
-                .append("Ganho relativo total: ").append(String.format("%.2f", ganhoRelativo)).append("\n")
-                .append("Perda relativa total: ").append(String.format("%.2f", perdaRelativa)).append("\n")
-                .append("Índice de bem-estar ecológico: ").append(String.format("%.2f", ibe)).append("\n")
-                .append("Status: ").append(status);
-
-        return sb.toString();
-    }
 }

@@ -145,8 +145,20 @@ public class SistemaPrincipal {
 
             try {
                 switch (op) {
-                    case 1 -> System.out.println(c.listarPresas(id));
-                    case 2 -> System.out.println(c.listarPredadores(id));
+                    case 1 -> {
+                        if (c.getGrafo().getEspeciePorId(id).getPresas().isEmpty()){
+                            System.out.println("(Nenhuma)");
+                        } else {
+                            System.out.println(c.listarPresas(id));
+                        }
+                    }
+                    case 2 -> {
+                        if (c.getGrafo().getEspeciePorId(id).getPredadores().isEmpty()) {
+                            System.out.println("(Nenhum)");
+                        } else {
+                            System.out.println(c.listarPredadores(id));
+                        }
+                    }
                     case 3 -> { return; }
                 }
             } catch (Exception e) {
@@ -157,6 +169,11 @@ public class SistemaPrincipal {
 
     private static void adicionarPredacao(GrafoController c) throws EspecieNaoEncontradaException, ValorEnergeticoInvalidoException, PredacaoJaExistenteException {
         System.out.println(c.listarEspeciesSimples());
+
+        if (c.getGrafo().getEspecies().isEmpty()) {
+            return;
+        }
+
         int predador = Menu.lerInt("ID do predador: ");
         int presa = Menu.lerInt("ID da presa: ");
         int custo = Menu.lerInt("Custo energético (ou 0 para automático): ");
@@ -183,8 +200,7 @@ public class SistemaPrincipal {
                     2. Maior ciclo
                     3. Menor ciclo
                     4. Melhor caminho entre duas espécies
-                    5. Avaliar bem-estar de espécie
-                    6. Voltar
+                    5. Voltar
                     Escolha:\s""", 1, 6);
             boolean decomps = false;
 
@@ -196,8 +212,7 @@ public class SistemaPrincipal {
                 case 2 -> System.out.println(c.maiorCiclo(decomps));
                 case 3 -> System.out.println(c.menorCiclo(decomps));
                 case 4 -> caminhoMelhor(c, decomps);
-                case 5 -> bemEstar(c);
-                case 6 -> {return;}
+                case 5 -> {return;}
             }
         }
     }
@@ -219,11 +234,5 @@ public class SistemaPrincipal {
         boolean nos = Menu.confirmar("Deseja considerar peso dos nós?", 'S', 'N');
         resultado = c.melhorCaminhoEnergetico(o, d, menor, nos, decomps);
         System.out.println(resultado);
-    }
-
-    private static void bemEstar(GrafoController c) throws EspecieNaoEncontradaException {
-        System.out.println(c.listarEspeciesSimples());
-        int id = Menu.lerInt("ID da espécie: ");
-        System.out.println(c.avaliarBemEstar(id));
     }
 }
