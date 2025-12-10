@@ -183,8 +183,8 @@
         "nomePredador" : "Onça-Pintada",
         "nomePresa" : "Capivara"
       } ],
-      "ganhoTotal" : 1737,
-      "perdaTotal" : 18
+      "perdaTotal" : 18,
+      "ganhoTotal" : 1737
     }, {
       "classe" : "Consumidor",
       "nome" : "Tartaruga",
@@ -202,8 +202,8 @@
         "nomePredador" : "Jacaré-Açu (juvenil)",
         "nomePresa" : "Tartaruga"
       } ],
-      "ganhoTotal" : 773,
-      "perdaTotal" : 5
+      "perdaTotal" : 5,
+      "ganhoTotal" : 773
     }, {
       "classe" : "Consumidor",
       "nome" : "Paca",
@@ -226,8 +226,8 @@
         "nomePredador" : "Suçuarana",
         "nomePresa" : "Paca"
       } ],
-      "ganhoTotal" : 1461,
-      "perdaTotal" : 10
+      "perdaTotal" : 10,
+      "ganhoTotal" : 1461
     }, {
       "classe" : "Consumidor",
       "nome" : "Veado-Catingueiro",
@@ -245,8 +245,8 @@
         "nomePredador" : "Onça-Pintada",
         "nomePresa" : "Veado-Catingueiro"
       } ],
-      "ganhoTotal" : 1755,
-      "perdaTotal" : 7
+      "perdaTotal" : 7,
+      "ganhoTotal" : 1755
     }, {
       "classe" : "Consumidor",
       "nome" : "Gafanhoto",
@@ -289,8 +289,8 @@
         "nomePredador" : "Barata",
         "nomePresa" : "Gafanhoto"
       } ],
-      "ganhoTotal" : 1947,
-      "perdaTotal" : 29
+      "perdaTotal" : 29,
+      "ganhoTotal" : 1947
     }, {
       "classe" : "Consumidor",
       "nome" : "Formiga",
@@ -313,8 +313,8 @@
         "nomePredador" : "Besouro (O. discicolle)",
         "nomePresa" : "Formiga"
       } ],
-      "ganhoTotal" : 1278,
-      "perdaTotal" : 5
+      "perdaTotal" : 5,
+      "ganhoTotal" : 1278
     }, {
       "classe" : "Consumidor",
       "nome" : "Tambaqui",
@@ -342,8 +342,8 @@
         "nomePredador" : "Cobra-d’água",
         "nomePresa" : "Tambaqui"
       } ],
-      "ganhoTotal" : 986,
-      "perdaTotal" : 5
+      "perdaTotal" : 5,
+      "ganhoTotal" : 986
     }, {
       "classe" : "Consumidor",
       "nome" : "Bicho-Preguiça",
@@ -366,8 +366,8 @@
         "nomePredador" : "Barata",
         "nomePresa" : "Bicho-Preguiça"
       } ],
-      "ganhoTotal" : 1270,
-      "perdaTotal" : 12
+      "perdaTotal" : 12,
+      "ganhoTotal" : 1270
     }, {
       "classe" : "Consumidor",
       "nome" : "Anta",
@@ -380,8 +380,8 @@
         "nomePresa" : "Guaraná"
       } ],
       "predadores" : [ ],
-      "ganhoTotal" : 1461,
-      "perdaTotal" : 0
+      "perdaTotal" : 0,
+      "ganhoTotal" : 1461
     }, {
       "classe" : "Consumidor",
       "nome" : "Aranha",
@@ -399,8 +399,8 @@
         "nomePredador" : "Formiga",
         "nomePresa" : "Aranha"
       } ],
-      "ganhoTotal" : 68,
-      "perdaTotal" : 72
+      "perdaTotal" : 72,
+      "ganhoTotal" : 68
     }, {
       "classe" : "Consumidor",
       "nome" : "Sapo",
@@ -418,8 +418,8 @@
         "nomePredador" : "Traíra",
         "nomePresa" : "Sapo"
       } ],
-      "ganhoTotal" : 68,
-      "perdaTotal" : 80
+      "perdaTotal" : 80,
+      "ganhoTotal" : 68
     }, {
       "classe" : "Consumidor",
       "nome" : "Garça",
@@ -442,8 +442,8 @@
         "nomePredador" : "Jacaré-Açu (juvenil)",
         "nomePresa" : "Garça"
       } ],
-      "ganhoTotal" : 229,
-      "perdaTotal" : 9
+      "perdaTotal" : 9,
+      "ganhoTotal" : 229
     }, {
       "classe" : "Consumidor",
       "nome" : "Tucano",
@@ -471,8 +471,8 @@
         "nomePredador" : "Bacillus subtilis amazônico",
         "nomePresa" : "Tucano"
       } ],
-      "ganhoTotal" : 1529,
-      "perdaTotal" : 20
+      "perdaTotal" : 20,
+      "ganhoTotal" : 1529
     }, {
       "classe" : "Consumidor",
       "nome" : "Cobra-d’água",
@@ -495,8 +495,8 @@
         "nomePredador" : "Piolho-de-cobra",
         "nomePresa" : "Cobra-d’água"
       } ],
-      "ganhoTotal" : 155,
-      "perdaTotal" : 300
+      "perdaTotal" : 300,
+      "ganhoTotal" : 155
     }, {
       "classe" : "Consumidor",
       "nome" : "Piranha",
@@ -519,8 +519,8 @@
         "nomePredador" : "Traíra",
         "nomePresa" : "Piranha"
       } ],
-      "ganhoTotal" : 175,
-      "perdaTotal" : 166
+      "perdaTotal" : 166,
+      "ganhoTotal" : 175
     }, {
       "classe" : "Consumidor",
       "nome" : "Traíra",
@@ -553,8 +553,8 @@
         "nomePredador" : "Piranha",
         "nomePresa" : "Traíra"
       } ],
-      "ganhoTotal" : 109,
-      "perdaTotal" : 10
+      "perdaTotal" : 10,
+      "ganhoTotal" : 109
     }, {
       "classe" : "Consumidor",
       "nome" : "Jacaré-Açu (juvenil)",
@@ -577,8 +577,8 @@
         "nomePresa" : "Garça"
       } ],
       "predadores" : [ ],
-      "ganhoTotal" : 630,
-      "perdaTotal" : 0
+      "perdaTotal" : 0,
+      "ganhoTotal" : 630
     }, {
       "classe" : "Consumidor",
       "nome" : "Suçuarana",
@@ -591,8 +591,8 @@
         "nomePresa" : "Paca"
       } ],
       "predadores" : [ ],
-      "ganhoTotal" : 175,
-      "perdaTotal" : 0
+      "perdaTotal" : 0,
+      "ganhoTotal" : 175
     }, {
       "classe" : "Consumidor",
       "nome" : "Boto-cor-de-rosa",
@@ -610,8 +610,8 @@
         "nomePredador" : "Traíra",
         "nomePresa" : "Boto-cor-de-rosa"
       } ],
-      "ganhoTotal" : 165,
-      "perdaTotal" : 540
+      "perdaTotal" : 540,
+      "ganhoTotal" : 165
     }, {
       "classe" : "Consumidor",
       "nome" : "Onça-Pintada",
@@ -664,8 +664,8 @@
         "nomePredador" : "Barata",
         "nomePresa" : "Onça-Pintada"
       } ],
-      "ganhoTotal" : 775,
-      "perdaTotal" : 1017
+      "perdaTotal" : 1017,
+      "ganhoTotal" : 775
     }, {
       "classe" : "Consumidor",
       "nome" : "Harpia",
@@ -703,8 +703,8 @@
         "nomePredador" : "Onça-Pintada",
         "nomePresa" : "Harpia"
       } ],
-      "ganhoTotal" : 521,
-      "perdaTotal" : 791
+      "perdaTotal" : 791,
+      "ganhoTotal" : 521
     }, {
       "classe" : "Consumidor",
       "nome" : "Jacaré-Açu (adulto)",
@@ -717,8 +717,8 @@
         "nomePresa" : "Capivara"
       } ],
       "predadores" : [ ],
-      "ganhoTotal" : 194,
-      "perdaTotal" : 0
+      "perdaTotal" : 0,
+      "ganhoTotal" : 194
     }, {
       "classe" : "Decompositor",
       "nome" : "Fungo-Orelha",
@@ -731,8 +731,8 @@
         "nomePresa" : "Urubu-rei"
       } ],
       "predadores" : [ ],
-      "ganhoTotal" : 116,
-      "perdaTotal" : 0
+      "perdaTotal" : 0,
+      "ganhoTotal" : 116
     }, {
       "classe" : "Decompositor",
       "nome" : "Urubu-rei",
@@ -770,8 +770,8 @@
         "nomePredador" : "Onça-Pintada",
         "nomePresa" : "Urubu-rei"
       } ],
-      "ganhoTotal" : 1656,
-      "perdaTotal" : 38
+      "perdaTotal" : 38,
+      "ganhoTotal" : 1656
     }, {
       "classe" : "Decompositor",
       "nome" : "Bacillus subtilis amazônico",
@@ -784,8 +784,8 @@
         "nomePresa" : "Tucano"
       } ],
       "predadores" : [ ],
-      "ganhoTotal" : 238,
-      "perdaTotal" : 0
+      "perdaTotal" : 0,
+      "ganhoTotal" : 238
     }, {
       "classe" : "Decompositor",
       "nome" : "Besouro (O. discicolle)",
@@ -813,8 +813,8 @@
         "nomePredador" : "Barata",
         "nomePresa" : "Besouro (O. discicolle)"
       } ],
-      "ganhoTotal" : 1378,
-      "perdaTotal" : 20
+      "perdaTotal" : 20,
+      "ganhoTotal" : 1378
     }, {
       "classe" : "Decompositor",
       "nome" : "Larva (H. tenuis)",
@@ -827,8 +827,8 @@
         "nomePresa" : "Cupuaçu"
       } ],
       "predadores" : [ ],
-      "ganhoTotal" : 1270,
-      "perdaTotal" : 0
+      "perdaTotal" : 0,
+      "ganhoTotal" : 1270
     }, {
       "classe" : "Decompositor",
       "nome" : "Piolho-de-cobra",
@@ -846,8 +846,8 @@
         "nomePresa" : "Onça-Pintada"
       } ],
       "predadores" : [ ],
-      "ganhoTotal" : 1080,
-      "perdaTotal" : 0
+      "perdaTotal" : 0,
+      "ganhoTotal" : 1080
     }, {
       "classe" : "Decompositor",
       "nome" : "Barata",
@@ -890,8 +890,8 @@
         "nomePredador" : "Urubu-rei",
         "nomePresa" : "Barata"
       } ],
-      "ganhoTotal" : 1134,
-      "perdaTotal" : 77
+      "perdaTotal" : 77,
+      "ganhoTotal" : 1134
     } ],
     "nome" : "Amazônia"
   } ],
