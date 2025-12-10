@@ -57,6 +57,7 @@ public class SistemaPrincipal {
         listarGrafos(g);
         if (g.getTamanho() == 0) return;
         int id = Menu.lerInt("Digite o id do grafo a remover: ") - 1;
+
         g.removerGrafo(id);
         System.out.println("Cadeia removida com sucesso.");
     }
