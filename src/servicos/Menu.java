@@ -17,7 +17,6 @@ public abstract class Menu {
                     break;
                 }
             } catch (Exception e){
-                //Ignora
             } finally {
                 sc.nextLine();
             }
@@ -69,7 +68,6 @@ public abstract class Menu {
                 if (!resposta.isEmpty())
                 break;
             } catch (Exception e) {
-                //ignora
             }
             System.out.println("Resposta inválida.");
         } while (true);
